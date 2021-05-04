@@ -5,7 +5,7 @@ export const noteService = {
     // addNote,
     removeNote,
     // getNoteById,
-    // saveNote
+    saveNote
 }
 
 //global vars
@@ -54,48 +54,75 @@ function removeNote(id) {
     _saveNotesToStorage();
 
     return Promise.resolve()
-    
+
+}
+function saveNote(note) {
+    return note.id ? _updateNote(note) : _addNote(note)
+}
+
+function _addNote(noteToAdd) {
+    var note = _createNote(noteToAdd)
+    gNotes.unshift(note)
+    _saveNotesToStorage();
+    return Promise.resolve(note)
+}
+
+function _updateNote(noteToUpdate) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return note.id === oteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate)
 }
 
 //create one note according to kind
-function _createNote(kind) {
-    switch (kind) {
+function _createNote(kind, note) {
+    let cond
+    console.log(kind)
+    if (!note) {
+        cond = kind
+    } else {
+        cond = note.type
+    }
+    console.log('cond', cond);
+    switch (cond) {
         case 'text':
             return {
-                id: utilsService.makeId(),
-                title: 'text title',
-                type: 'text',
-                content: 'This is text note'
+                id: note ? note.id : utilsService.makeId(),
+                title: note ? note.title : 'text title',
+                type: note ? note.type : 'text',
+                content: note ? note.content : 'This is text note'
             }
         case 'image':
             return {
-                id: utilsService.makeId(),
-                title:'image title',
-                type: 'image',
-                url:'some url',
-                content: 'This is image note'
+                id: note ? note.id : utilsService.makeId(),
+                title: note ? note.title : 'text title',
+                type: note ? note.type : 'image',
+                url: note ? note.url : 'some url',
+                content: note ? note.content : 'This is image note'
             }
         case 'video':
             return {
-                id: utilsService.makeId(),
-                title:'video title',
-                type: 'video',
-                url:'source url',
-                content: 'This is video note'
+                id: note ? note.id : utilsService.makeId(),
+                title: note ? note.title : 'video title',
+                type: note ? note.type : 'video',
+                url: note ? note.url : 'source url',
+                content: note ? note.content : 'This is video note'
             }
         case 'todo':
             return {
-                id: utilsService.makeId(),
-                title:'list title',
-                type: 'todo',
-                content: 'This is todo note'
+                id: note ? note.id : utilsService.makeId(),
+                title: note ? note.title : 'list title',
+                type: note ? note.type : 'todo',
+                content: note ? note.content : 'This is todo note'
             }
         default:
             return {
-                id: utilsService.makeId(),
-                title:'text title',
-                type: 'text',
-                content: 'This is text note'
+                id: note ? note.id : utilsService.makeId(),
+                title: note ? note.title : 'text title',
+                type: note ? note.type : 'text',
+                content: note ? note.content : 'This is text note'
             }
         // return 'something'
     }
