@@ -5,6 +5,7 @@
 @import url("./email-app/email-side-bar.css");
 @import url("./email-app/search-email.css");
 @import url("./email-app/email-details.css");
+@import url("./note/notes.css");
 
 main {
     flex-grow: 1;
