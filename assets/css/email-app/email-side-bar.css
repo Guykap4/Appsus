@@ -1,0 +1,30 @@
+.email-side-bar {
+    background-color: #9dd2f2;
+    /* flex-grow: 1; */
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.email-side-bar .new-mail-btn {
+    align-self: center;
+    width: 180px;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-mail-btn .compose-plus {
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+.email-side-bar > *:not(:first-child) {
+    margin-top: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px #e7c79e solid;
+}

@@ -1,0 +1,38 @@
+.email-app-container {
+    display: flex;
+    height: 100%;
+}
+
+.email-content {
+    flex-grow: 3;
+    overflow-y: scroll;
+}
+
+.email-list {
+
+}
+
+.email-preview {
+    display: grid;
+    grid-template-columns: 2fr 5fr 20fr 2fr;
+    padding: 15px;
+    border-bottom: 1px #e7c79e solid;
+    font-size: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.email-preview img {
+    width: 40px;
+}
+
+.read {
+    background-color: #fff3bf;
+}
+
+.no-emails {
+    text-align: center;
+    font-size: 30px;
+    color: gray;
+    margin-top: 30px;
+}   

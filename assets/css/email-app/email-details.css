@@ -1,0 +1,40 @@
+.email-details {
+    padding: 20px 40px 20px 40px;
+    border-bottom: 3px #e7c79e solid;
+}
+
+.email-details .email-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.email-btn {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    border: 1px #e7c79e solid;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.email-btn:hover {
+    background-color: #e7c79e;
+    cursor: pointer;
+}
+
+.email-details h2 {
+    font-size: 30px;
+}
+
+.email-details h3 {
+    font-size: 23px;
+}
+
+.email-details button img {
+    width: 80%;
+}
+
+.email-details-content {
+margin-top: 10px;
+}

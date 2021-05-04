@@ -4,6 +4,7 @@ footer {
     justify-content: center;
     margin-top: auto;
     background-color: #f1df89;
+    height: 50px;
 }
 
 footer small {
