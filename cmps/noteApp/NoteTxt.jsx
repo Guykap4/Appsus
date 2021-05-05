@@ -1,6 +1,6 @@
 import { EditNote } from "./EditNote.jsx"
-
 export class NoteTxt extends React.Component {
+    im
     removeEvent
     state = {
         note: '',
@@ -10,11 +10,12 @@ export class NoteTxt extends React.Component {
         this.setState({ note: this.props.note })
     }
     editNote = () => {
-        this.setState({ isEdit: !this.state.isEdit })
+        this.setState({
+            isEdit: !this.state.isEdit})
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const { type, title, content, id } = this.state.note
         const { onRemoveNote } = this.props
         const { onUpdateNote } = this.props
@@ -26,7 +27,7 @@ export class NoteTxt extends React.Component {
                 <span>body: {content}</span><br />
                 <button onClick={() => { onRemoveNote(id) }}>remove</button>
                 <button onClick={() => { this.editNote() }}>update note</button>
-                {this.state.isEdit && <EditNote note={this.state.note} onUpdateNote={onUpdateNote} />}
+                {this.state.isEdit && <EditNote note={this.state.note} onUpdateNote={onUpdateNote} updateToggle={this.editNote} />}
             </div>
         )
     }

@@ -4,13 +4,13 @@ import { NoteVideo } from './NoteVideo.jsx'
 import { NoteToDo } from './NoteToDo.jsx'
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
-    function dynamicCmp() {
-        switch (note.type) {
+    function dynamicCmp(type) {
+        switch (type) {
             case 'text':
-                console.log('text');
+                // console.log('text');
                 return <NoteTxt note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} />
             case 'image':
-                console.log('image');
+                // console.log('image');
                 return <NoteImage note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote}/>
             case 'todo':
                 return <NoteToDo note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote}/>
@@ -20,8 +20,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
                 return 'something went wrong'//...some default error view
         }
     }
+    const {type} = note
     return (
-        <div className="note-preview" >{dynamicCmp()}</div>
+        <div className="note-preview" >{dynamicCmp(type)}</div>
     )
 
 }
