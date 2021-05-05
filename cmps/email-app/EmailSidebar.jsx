@@ -27,9 +27,9 @@ export class EmailSidebar extends React.Component {
         return (
             <div className="email-side-bar">
                 <NavLink to="/email/edit"><button className="new-mail-btn"><span className="compose-plus">+</span> Compose</button></NavLink>
-                <NavLink exact activeClassName="side-bar-active" to="/email"><span>Inbox</span><span>{this.state.unreadCount}</span></NavLink>
-                <NavLink><span>Starred</span></NavLink>
-                <NavLink><span>Sent Mail</span></NavLink>
+                <NavLink exact activeClassName="side-bar-active" to="/email"><div className="side-bar-nav">Inbox <span>{this.state.unreadCount > 0 && this.state.unreadCount}</span></div></NavLink>
+                <NavLink><div className="side-bar-nav">Starred</div></NavLink>
+                <NavLink><div className="side-bar-nav">Sent Mail</div></NavLink>
             </div>
         )
     }

@@ -22,10 +22,12 @@ export class NoteApp extends React.Component {
                 })
             })
     }
+
     onRemoveNote= (id)=> {
         noteService.removeNote(id)
         this.loadNotes()
     }
+    
     onUpdateNote = (note) => {
         noteService.saveNote(note)
         this.loadNotes()

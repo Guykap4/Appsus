@@ -1,25 +1,45 @@
+import { emailService } from '../../services/email.service.js'
+
 export class EmailEdit extends React.Component {
 
     state = {
-        filterBy: {
+        mail: {
             to: '',
             cc: '',
             bcc: '',
             subject: '',
             content: '',
+        },
+        id: null,
+    }
+
+    componentDidMount() {
+        const id = this.props.match.params.emailid;
+        if (id) {
+            const mail = emailService.getEmailById(id)
+            if (!mail) this.props.history.push('/email')
+            this.setState(prevState => ({ ...prevState, mail: {
+                to: mail.sender,
+                cc: '',
+                bcc: '',
+                subject: `Re: ${mail.title}`,
+                content: mail.content,
+            } }), () => console.log(this.state))
         }
     }
 
     handleChange = (ev) => {
         const field = ev.target.name;
         const val = ev.target.type === 'number' ? +ev.target.value : ev.target.value;
-        this.setState({ filterBy: { ...this.state.filterBy, [field]: val } })
+        this.setState({ mail: { ...this.state.mail, [field]: val } })
     }
 
-    getEmail = () => {
-        this.props.onAddEmail(this.state.filterBy);
+    sendEmail = () => {
+        const id = this.props.match.params.emailid;
+        if (!id) this.props.onAddEmail(this.state.mail);
+        else this.props.onUpdateEmail(this.state.mail, id);
         this.setState({
-            filterBy: {
+            mail: {
                 to: '',
                 cc: '',
                 bcc: '',
@@ -35,32 +55,30 @@ export class EmailEdit extends React.Component {
     }
 
     render() {
-
-        const { to, cc, bcc, subject, content } = this.state
-
+        console.log('render');
         return (
-                <div className="new-email-container">
-                    <div className="compose-header">
-                        <h2>New Massage</h2>
-                        <button className="close-add-btn" onClick={this.goBack}>X</button>
-                    </div>
-                    <form className="edit-email-form">
-                        <label htmlFor="to"></label>
-                        <input type="text" id="to" name="to" value={to} onChange={this.handleChange} required placeholder="To:" />
-                        <label htmlFor="cc"></label>
-                        <input type="text" id="cc" name="cc" value={cc} onChange={this.handleChange} placeholder="Cc:" />
-                        <label htmlFor="bcc"></label>
-                        <input type="text" id="bcc" name="bcc" value={bcc} onChange={this.handleChange} placeholder="Bcc:" />
-                        <label htmlFor="subject"></label>
-                        <input type="text" id="subject" name="subject" value={subject} onChange={this.handleChange} required placeholder="Subject:" />
-                        <label htmlFor="content"></label>
-                        <textarea id="content" name="content" value={content} onChange={this.handleChange} />
-                        <button className="send-add-btn" onClick={(ev) => {
-                            ev.preventDefault()
-                            this.getEmail()
-                        }}>Send</button>
-                    </form>
+            <div className="new-email-container">
+                <div className="compose-header">
+                    <h2>New Message</h2>
+                    <button className="close-add-btn" onClick={this.goBack}>X</button>
                 </div>
+                <form className="edit-email-form">
+                    <label htmlFor="to"></label>
+                    <input type="text" id="to" name="to" value={this.state.mail.to} onChange={this.handleChange} required placeholder="To:" />
+                    <label htmlFor="cc"></label>
+                    <input type="text" id="cc" name="cc" value={this.state.mail.cc} onChange={this.handleChange} placeholder="Cc:" />
+                    <label htmlFor="bcc"></label>
+                    <input type="text" id="bcc" name="bcc" value={this.state.mail.bcc} onChange={this.handleChange} placeholder="Bcc:" />
+                    <label htmlFor="subject"></label>
+                    <input type="text" id="subject" name="subject" value={this.state.mail.subject} onChange={this.handleChange} required placeholder="Subject:" />
+                    <label htmlFor="content"></label>
+                    <textarea id="content" name="content" value={this.state.mail.content} onChange={this.handleChange} />
+                    <button className="send-add-btn" onClick={(ev) => {
+                        ev.preventDefault()
+                        this.sendEmail()
+                    }}>Send</button>
+                </form>
+            </div>
         )
     }
 }

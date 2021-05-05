@@ -5,6 +5,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 75px;
+    padding: 0 20px 0 10px;
 }
 
 .header .logo {
@@ -12,6 +13,59 @@ header {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.nav-icon {
+    width: 50px;
+    transition: 0.1s;
+}
+
+.nav-icon:hover {
+    width: 60px;
+    cursor: pointer;
+}
+
+.nav-icon img {
+    width: 100%;
+}
+
 .nav-icon > * {
     margin-right: 5px;
+}
+
+.app-menu {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 250px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px #f47b22 solid;
+    border-radius: 20px;
+    height: 100px;
+    z-index: 1;
+}
+
+.app-menu-icon {
+    width: 50px;
+    transition: 0.2s;
+    opacity: 0.5;
+    transition: all 0.1s;
+}
+
+.app-menu-icon:hover {
+    transform: scale(1.05);
+    width: 60px;
+    opacity: 1;
+    transition: all 0.1s;
+}
+
+.app-menu-icon img {
+    width: 100%;
+}
+
+.active-icon .app-menu-icon {
+    width: 60px;
+    opacity: 1;
 }

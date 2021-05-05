@@ -36,5 +36,11 @@
 }
 
 .email-details-content {
-margin-top: 10px;
+    margin-top: 10px;
+}
+
+.description-title-span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

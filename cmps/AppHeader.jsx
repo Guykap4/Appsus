@@ -1,16 +1,24 @@
-export function AppHeader() {
+import { AppMenu } from './AppMenu.jsx'
 
-    const { Link } = ReactRouterDOM
+export class AppHeader extends React.Component {
 
+    state = {
+        isMenuShown: false,
+    }
 
-    return (
-        <header className="header">
-            <div className="logo">LOGO</div>
-            <div className="nav-icon">NAV ICON
-            <Link to="/email">EMAIL</Link>
-            <Link to="/notes">NOTES</Link>
-            <Link to="/books">BOOKS</Link>
-            </div>
-        </header>
-    )
+    toggleMenu = () => {
+        this.setState({
+            isMenuShown: !this.state.isMenuShown,
+        })
+    }
+
+    render() {
+        return (
+            <header className="header">
+                <div className="logo">LOGO</div>
+                <div onClick={this.toggleMenu} className="nav-icon"><img src="./assets/img/app-menu-icon.png" /></div>
+                {this.state.isMenuShown && <AppMenu />}
+            </header>
+        )
+    }
 }

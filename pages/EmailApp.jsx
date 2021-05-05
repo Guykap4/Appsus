@@ -9,6 +9,7 @@ export class EmailApp extends React.Component {
 
     state = {
         emails: null,
+        searchBy: null,
         filterBy: null,
     }
 
@@ -17,7 +18,7 @@ export class EmailApp extends React.Component {
     }
 
     loadEmails = () => {
-        emailService.query(this.state.filterBy)
+        emailService.query(this.state.searchBy, this.state.filterBy)
             .then(emails => {
                 this.setState({ emails: emails }, () => console.log(this.state))
             })
@@ -35,8 +36,17 @@ export class EmailApp extends React.Component {
         this.loadEmails();
     }
 
+    onUpdateEmail = ({ to, subject, content }, id) => {
+        emailService.UpdateEmail(to, subject, content, id)
+        this.loadEmails();
+    }
+
+    onSetSearch = (searchBy) => {
+        this.setState({ searchBy }, this.loadEmails)
+    }
+
     onSetFilter = (filterBy) => {
-        this.setState({filterBy}, this.loadEmails)
+        this.setState({ filterBy }, this.loadEmails)
     }
 
     render() {
@@ -50,8 +60,8 @@ export class EmailApp extends React.Component {
                 <EmailSidebar />
                 <div className="email-content">
                     <Switch>
-                        <Route path="/email/edit" render={(props)=> <EmailEdit {...props} onAddEmail={this.onAddEmail} />} />
-                        <Route path="/email" render={(props)=> <EmailList {...props} onSetFilter={this.onSetFilter}  onDeleteEmail={this.onDeleteEmail} emails={emails} />} />
+                        <Route path="/email/edit/:emailid?" render={(props) => <EmailEdit {...props} onAddEmail={this.onAddEmail} onUpdateEmail={this.onUpdateEmail} />} />
+                        <Route path="/email" render={(props) => <EmailList {...props} onSetSearch={this.onSetSearch} onSetFilter={this.onSetFilter} onDeleteEmail={this.onDeleteEmail} emails={emails} />} />
                     </Switch>
                 </div>
             </section>
