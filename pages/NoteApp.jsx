@@ -1,4 +1,5 @@
 import { noteService } from '../services/notes.service.js'
+import { NoteInput } from '../cmps/noteApp/InputNote.jsx'
 import { NoteList } from '../cmps/noteApp/NoteList.jsx'
 
 export class NoteApp extends React.Component {
@@ -17,9 +18,7 @@ export class NoteApp extends React.Component {
     loadNotes() {
         noteService.query()
             .then((notes) => {
-                this.setState({ notes }, () => {
-                    console.log(this.state.notes);
-                })
+                this.setState({ notes })
             })
     }
     onRemoveNote= (id)=> {
@@ -36,13 +35,7 @@ export class NoteApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return (
             <section className="note-app">
-                <select>
-                    <option value="image">image</option>
-                    <option value="text">text</option>
-                    <option value="todo">todos</option>
-                    <option value="video">video</option>
-                </select>
-                {console.log(notes)}
+                <NoteInput onUpdateNote={this.onUpdateNote}/>
                 <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onUpdateNote={this.onUpdateNote} />
 
             </section>

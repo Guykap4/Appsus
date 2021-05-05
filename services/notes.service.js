@@ -56,20 +56,22 @@ function removeNote(id) {
     return Promise.resolve()
 
 }
+
+//save changes or edit the note 
 function saveNote(note) {
-    return note.id ? _updateNote(note) : _addNote(note)
+    return note.id!=='' ? _updateNote(note) : _addNote(note)
 }
 
 function _addNote(noteToAdd) {
     var note = _createNote(noteToAdd)
     gNotes.unshift(note)
-    _saveNotesToStorage();
+    _saveNotesToStorage()
     return Promise.resolve(note)
 }
 
 function _updateNote(noteToUpdate) {
     var noteIdx = gNotes.findIndex(function (note) {
-        return note.id === oteToUpdate.id;
+        return note.id === noteToUpdate.id
     })
     gNotes.splice(noteIdx, 1, noteToUpdate)
     _saveNotesToStorage();
@@ -79,19 +81,18 @@ function _updateNote(noteToUpdate) {
 //create one note according to kind
 function _createNote(kind, note) {
     let cond
-    console.log(kind)
     if (!note) {
         cond = kind
     } else {
         cond = note.type
     }
-    console.log('cond', cond);
     switch (cond) {
         case 'text':
             return {
                 id: note ? note.id : utilsService.makeId(),
                 title: note ? note.title : 'text title',
                 type: note ? note.type : 'text',
+                url:'',
                 content: note ? note.content : 'This is text note'
             }
         case 'image':
@@ -115,6 +116,7 @@ function _createNote(kind, note) {
                 id: note ? note.id : utilsService.makeId(),
                 title: note ? note.title : 'list title',
                 type: note ? note.type : 'todo',
+                url:'',
                 content: note ? note.content : 'This is todo note'
             }
         default:
@@ -122,6 +124,7 @@ function _createNote(kind, note) {
                 id: note ? note.id : utilsService.makeId(),
                 title: note ? note.title : 'text title',
                 type: note ? note.type : 'text',
+                url:'',
                 content: note ? note.content : 'This is text note'
             }
         // return 'something'

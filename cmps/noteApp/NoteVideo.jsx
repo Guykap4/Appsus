@@ -12,7 +12,7 @@ export class NoteVideo extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const { type, title, content, id,url } = this.state.note
         const { onRemoveNote } = this.props
         const { onUpdateNote } = this.props
@@ -28,7 +28,7 @@ export class NoteVideo extends React.Component {
                 <span>content {content}</span><br />
                 <button onClick={() => { onRemoveNote(id) }}>remove</button>
                 <button onClick={() => { this.editNote() }}>update note</button>
-                {this.state.isEdit && <EditNote note={this.state.note} onUpdateNote={onUpdateNote} />}
+                {this.state.isEdit && <EditNote note={this.state.note} onUpdateNote={onUpdateNote} updateToggle={this.editNote}/>}
             </div>
         )
     }
