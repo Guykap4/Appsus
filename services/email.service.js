@@ -5,20 +5,70 @@ export const emailService = {
     query,
     getEmailById,
     deleteEmail,
+    addEmail,
+    getUnreadCount,
+    makeRead,
+    toggleRead,
+}
+
+function makeRead(id) {
+    const idx = _getEmailldx(id)
+    gEmails[idx].isRead = true;
+    storageService.saveToStorage('emails', gEmails);
+}
+
+function toggleRead(id) {
+    const idx = _getEmailldx(id)
+    gEmails[idx].isRead = !gEmails[idx].isRead;
+    storageService.saveToStorage('emails', gEmails);
+}
+
+function _getEmailldx(id) {
+    return gEmails.findIndex(email => email.id === id)
+}
+
+function getUnreadCount() {
+    let count = 0;
+    gEmails.forEach(email => {
+        if (email.isRead) count++
+    })
+    return count;
 }
 
 function query(filterBy) {
-    return Promise.resolve(gEmails);
+    console.log(filterBy);
+    if (!filterBy) return Promise.resolve(gEmails);
+    const filteredBooks = gEmails.filter(book => {
+        return (
+            book.title.includes(filterBy) || book.sender.includes(filterBy) || book.content.includes(filterBy)
+        );
+    });
+    return Promise.resolve(filteredBooks);
 }
 
 function getEmailById(id) {
-    return gEmails.find(email => email.id === id)
+    return gEmails.find(email => email.id === id);
 }
 
 function deleteEmail(id) {
-    const idx = gEmails.findIndex(email => email.id === id)
+    const idx = _getEmailldx(id)
     gEmails.splice(idx, 1);
-    storageService.saveToStorage('emails', gEmails)
+    storageService.saveToStorage('emails', gEmails);
+}
+
+function addEmail(sender, title, content) {
+    const newEmail = {
+        id: utilsService.makeId(),
+        sender,
+        title,
+        content,
+        isRead: false,
+        isStarred: false,
+        time: '11:11'
+    }
+
+    gEmails.push(newEmail);
+    storageService.saveToStorage('emails', gEmails);
 }
 
 const gEmails = storageService.loadFromStorage('emails') && storageService.loadFromStorage('emails').length > 0 ? storageService.loadFromStorage('emails') : [

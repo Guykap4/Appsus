@@ -5,18 +5,19 @@
 
 .email-content {
     flex-grow: 3;
-    overflow-y: scroll;
 }
 
-/* .email-list {
-
-} */
+.email-list {
+    height: calc(100vh - 185px);
+    overflow-y: scroll;
+}
 
 .email-preview {
     display: grid;
     grid-template-columns: 2fr 5fr 20fr 2fr;
     padding: 15px;
     border-bottom: 1px #e7c79e solid;
+    background-color: #fff3bf;
     font-size: 20px;
     align-items: center;
     cursor: pointer;
@@ -27,7 +28,7 @@
 }
 
 .read {
-    background-color: #fff3bf;
+    background-color: #FFFFFF;
 }
 
 .no-emails {

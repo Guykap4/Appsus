@@ -1,6 +1,8 @@
+const { Route, Switch, Link } = ReactRouterDOM
+
 import { emailService } from '../services/email.service.js'
 import { EmailList } from '../cmps/email-app/EmailList.jsx'
-import { EmailFilter } from '../cmps/email-app/EmailFilter.jsx'
+import { EmailEdit } from '../cmps/email-app/EmailEdit.jsx'
 import { EmailSidebar } from '../cmps/email-app/EmailSidebar.jsx'
 
 export class EmailApp extends React.Component {
@@ -14,8 +16,8 @@ export class EmailApp extends React.Component {
         this.loadEmails();
     }
 
-    loadEmails = (filterBy) => {
-        emailService.query(filterBy)
+    loadEmails = () => {
+        emailService.query(this.state.filterBy)
             .then(emails => {
                 this.setState({ emails: emails }, () => console.log(this.state))
             })
@@ -25,6 +27,16 @@ export class EmailApp extends React.Component {
         emailService.deleteEmail(id)
         console.log('deleted!');
         this.loadEmails();
+    }
+
+    onAddEmail = ({ to, subject, content }) => {
+        emailService.addEmail(to, subject, content)
+        console.log('added!');
+        this.loadEmails();
+    }
+
+    onSetFilter = (filterBy) => {
+        this.setState({filterBy}, this.loadEmails)
     }
 
     render() {
@@ -37,9 +49,10 @@ export class EmailApp extends React.Component {
             <section className="email-app-container">
                 <EmailSidebar />
                 <div className="email-content">
-                    <EmailFilter />
-                    <EmailList onDeleteEmail={this.onDeleteEmail} emails={emails} />
-                    {(!emails || emails.length === 0 ) && <div className="no-emails">No Emails to show...</div>}
+                    <Switch>
+                        <Route path="/email/edit" render={(props)=> <EmailEdit {...props} onAddEmail={this.onAddEmail} />} />
+                        <Route path="/email" render={(props)=> <EmailList {...props} onSetFilter={this.onSetFilter}  onDeleteEmail={this.onDeleteEmail} emails={emails} />} />
+                    </Switch>
                 </div>
             </section>
         )

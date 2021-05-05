@@ -1,9 +1,11 @@
 import { EmailDetails } from './EmailDetails.jsx'
+import { emailService } from '../../services/email.service.js' 
+import { eventBusService } from '../../services/event-bus-service.js'
 
 export class EmailPreview extends React.Component {
     state = {
         isDetails: false,
-        isRead: false,
+        isRead: this.props.email.isRead,
     }
 
     getMsgLength() {
@@ -24,6 +26,8 @@ export class EmailPreview extends React.Component {
     toggleDetails = () => {
         this.setState({ isDetails: !this.state.isDetails });
         this.makeRead();
+        emailService.makeRead(this.props.email.id);
+        eventBusService.emit('readChange');
     }
 
     makeRead = () => {
@@ -33,10 +37,12 @@ export class EmailPreview extends React.Component {
     toggleRead = (ev) => {
         ev.stopPropagation();
         this.setState({ isRead: !this.state.isRead });
+        emailService.toggleRead(this.props.email.id)
+        eventBusService.emit('readChange');
     }
 
     render() {
-
+        
         const  { email, onDeleteEmail } = this.props;
 
         return (

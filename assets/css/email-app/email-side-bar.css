@@ -28,3 +28,7 @@
     padding-bottom: 5px;
     border-bottom: 1px #e7c79e solid;
 }
+
+.side-bar-active {
+    background-color: #ff65a3ad;
+}
