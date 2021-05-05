@@ -26,6 +26,10 @@ export class NoteApp extends React.Component {
         noteService.removeNote(id)
         this.loadNotes()
     }
+    onUpdateNote = (note) => {
+        noteService.saveNote(note)
+        this.loadNotes()
+    }
 
     render() {
         const { notes } = this.state
@@ -39,7 +43,7 @@ export class NoteApp extends React.Component {
                     <option value="video">video</option>
                 </select>
                 {console.log(notes)}
-                <NoteList notes={notes} onRemoveNote={this.onRemoveNote} />
+                <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onUpdateNote={this.onUpdateNote} />
 
             </section>
         )
