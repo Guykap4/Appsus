@@ -14,7 +14,11 @@ export class ToDoNote extends React.Component {
     renderTodos = (toDos) => {
         return toDos.map((toDo, idx) => {
             return (
-                <div key={idx}>{toDo}</div>
+                <div className={toDo.isDone ? 'checked' : ''} key={idx} onClick={() => this.props.onToggleDone(idx, this.state.note.id)}>
+                    <img src={`../../assets/img/${toDo.isDone? 'checked-square-icon' : 'square-icon'}.png`} />
+                    {toDo.toDo}
+                    <button onClick={() => this.props.onRemoveTodo(idx, this.state.note.id)}>X</button>
+                    </div>
             )
         })
     }
@@ -26,6 +30,7 @@ export class ToDoNote extends React.Component {
                 <div className="note-content">
                     {this.renderTodos(this.state.note.info.toDos)}
                 </div>
+                <button onClick={this.props.onAddTodo}><img src="../../assets/img/plus-icon.png" /></button>
                 <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note} />
             </div>
         )

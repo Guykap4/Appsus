@@ -5,6 +5,13 @@ export const noteService = {
     removeNote,
     createNote,
     updateNote,
+    removeTodo,
+    toggleDone,
+}
+
+function removeTodo(toDoIdx, NoteId) {
+    const noteIdx = _getNoteIdx(NoteId);
+    gNotes[noteIdx].info.toDos.splice(toDoIdx, 1);
 }
 
 function createNote(type, val) {
@@ -92,6 +99,12 @@ function removeNote(id) {
     storageService.saveToStorage('notes', gNotes);
 }
 
+function toggleDone(toDoIdx, NoteId) {
+    const idx = _getNoteIdx(NoteId);
+    gNotes[idx].info.toDos[toDoIdx].isDone = !gNotes[idx].info.toDos[toDoIdx].isDone
+    storageService.saveToStorage('notes', gNotes);
+}
+
 const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
@@ -117,10 +130,18 @@ const gNotes = storageService.loadFromStorage('notes') || [
         type: 'toDoNote',
         isPinned: false,
         info: {
-            toDos: [
-                'learn javaScript',
-                'learn css',
-                'learn html',
+            toDos: [{
+                toDo: 'learn javaScript',
+                isDone: true,
+            },
+            {
+                toDo: 'learn CSS',
+                isDone: false,
+            },
+            {
+                toDo: 'learn HTML',
+                isDone: false,
+            }
             ]
         }
     },

@@ -3,7 +3,7 @@ import { ImgNote } from './ImgNote.jsx'
 import { VidNote } from './VidNote.jsx'
 import { ToDoNote } from './ToDoNote.jsx'
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onRemoveTodo, onToggleDone }) {
 
     function NoteTypePicker(type) {
         switch (type) {
@@ -12,7 +12,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             case 'imgNote':
                 return <ImgNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
             case 'toDoNote':
-                return <ToDoNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+                return <ToDoNote onToggleDone={onToggleDone} onRemoveTodo={onRemoveTodo} onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
             case 'vidNote':
                 return <VidNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
             default:

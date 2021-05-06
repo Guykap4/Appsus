@@ -6,6 +6,7 @@ export class VidNote extends React.Component {
         note: '',
         isEdit: false
     }
+    
     componentDidMount() {
         this.setState({ note: this.props.note })
     }

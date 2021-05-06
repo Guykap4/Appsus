@@ -35,11 +35,27 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
 
+    onRemoveTodo = (toDoIdx, NoteId) => {
+        noteService.removeTodo(toDoIdx, NoteId);
+        this.loadNotes();
+    }
+
+    onToggleDone = (toDoIdx, NoteId) => {
+        noteService.toggleDone(toDoIdx, NoteId);
+        this.loadNotes();
+    }
+
     render() {
         return (
             <React.Fragment>
                 <AddNote addNote={this.addNote} />
-                {this.state.notes && <NoteList onUpdateNote={this.onUpdateNote}  onRemoveNote={this.onRemoveNote} notes={this.state.notes} />}
+                {this.state.notes &&
+                    <NoteList
+                        onToggleDone={this.onToggleDone}
+                        onRemoveTodo={this.onRemoveTodo}
+                        onUpdateNote={this.onUpdateNote}
+                        onRemoveNote={this.onRemoveNote}
+                        notes={this.state.notes} />}
             </React.Fragment>
 
         )
