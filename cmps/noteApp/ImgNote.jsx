@@ -1,4 +1,5 @@
 import { NoteMenu } from "./NoteMenu.jsx"
+import { NoteEdit } from './NoteEdit.jsx'
 
 export class ImgNote extends React.Component {
 
@@ -26,7 +27,7 @@ export class ImgNote extends React.Component {
                 <img src={url} />
                 {this.state.isEdit ?
                 <NoteEdit toggleEditNote={this.toggleEditNote} note={this.state.note} onUpdateNote={this.props.onUpdateNote} /> :
-                <div>{caption}</div> }
+                <div onClick={this.toggleEditNote}>{caption}</div> }
                 </div>
                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note} />
             </div>
