@@ -1,37 +1,35 @@
 import { NoteMenu } from "./NoteMenu.jsx"
+import { ToDosList } from "./ToDoList.jsx"
 
 export class ToDoNote extends React.Component {
 
     state = {
         note: '',
-        // isEdit: false
     }
 
     componentDidMount() {
         this.setState({ note: this.props.note })
     }
 
-    renderTodos = (toDos) => {
-        return toDos.map((toDo, idx) => {
-            return (
-                <div className={toDo.isDone ? 'checked' : ''} key={idx} onClick={() => this.props.onToggleDone(idx, this.state.note.id)}>
-                    <img src={`../../assets/img/${toDo.isDone? 'checked-square-icon' : 'square-icon'}.png`} />
-                    {toDo.toDo}
-                    <button onClick={() => this.props.onRemoveTodo(idx, this.state.note.id)}>X</button>
-                    </div>
-            )
-        })
-    }
-
     render() {
+
+        const { onRemoveTodo, onToggleDone, onUpdateNote } = this.props
+
         if (!this.state.note) return <div>Loading...</div>
         return (
             <div style={{ backgroundColor: this.state.note.color }} className="todo-note note">
                 <div className="note-content">
-                    {this.renderTodos(this.state.note.info.toDos)}
+
+                    <ToDosList
+                        note={this.state.note}
+                        onRemoveTodo={onRemoveTodo}
+                        onToggleDone={onToggleDone}
+                        onUpdateNote={onUpdateNote}
+                    />
+
+                    <button onClick={() => this.props.onAddTodo(this.state.note.id)}><img src="../../assets/img/plus-icon.png" /></button>
                 </div>
-                <button onClick={this.props.onAddTodo}><img src="../../assets/img/plus-icon.png" /></button>
-                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note}onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned}  />
+                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note} onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} />
             </div>
         )
     }

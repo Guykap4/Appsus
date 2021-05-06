@@ -10,9 +10,11 @@ export class NoteMenu extends React.Component {
             note: this.props.note
         })
     }
+
     toggleColorpicker = () => {
         this.setState({ isPickerOpen: !this.state.isPickerOpen })
     }
+
     get NoteTypeIcon() {
         const { type } = this.props.note;
         let typeIconUrl;
@@ -40,10 +42,11 @@ export class NoteMenu extends React.Component {
     }
     
     render() {
+        if (!this.state.note) return <div>Loading...</div>
         return (
                 <div className="note-editor">
                     <div className="note-type-icon"><img src={this.NoteTypeIcon} /></div>
-                    <div onClick={() => { this.props.onPinned(this.state.note.id) }} className="note-editor-icon"><img src="../../assets/img/pin-icon.png" /></div>
+                    <div onClick={() => { this.props.onPinned(this.state.note.id) }} className={`note-editor-icon ${this.state.note.isPinned ? 'pinned' : ''}`}><img src="../../assets/img/pin-icon.png" /></div>
                     <div onClick={() => { this.toggleColorpicker() }} className="note-editor-icon"><img src="../../assets/img/color-icon.png" /></div>
                     {this.state.isPickerOpen && <ColorPickerPallet onNoteColorChange={this.props.onNoteColorChange} toggleColorpicker={this.toggleColorpicker} noteId={this.state.note.id} />}
                     <div className="note-editor-icon"><img src="../../assets/img/copy-icon.ico" /></div>

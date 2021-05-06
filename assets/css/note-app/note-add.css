@@ -45,3 +45,7 @@ input[type="radio"]:checked+label img {
     background-color: rgb(146, 146, 146);
 }
 
+.note-search img {
+    width: 30px;
+}
+

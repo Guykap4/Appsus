@@ -26,3 +26,8 @@
 .note-type-icon img{
     width: 30px;
 }
+
+.pinned {
+    background-color: rgba(0, 0, 0, 0.212);
+    border-radius: 50%;
+}

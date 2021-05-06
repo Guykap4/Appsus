@@ -1,7 +1,9 @@
 import { utilsService } from './utils.service.js'
 import { storageService } from './storage.service.js'
+
 export const noteService = {
-    query,
+    queryPinned,
+    queryUnpinned,
     removeNote,
     createNote,
     updateNote,
@@ -9,11 +11,22 @@ export const noteService = {
     noteColorChange,
     removeTodo,
     toggleDone,
+    addTodo,
 }
 
-function removeTodo(toDoIdx, NoteId) {
-    const noteIdx = _getNoteIdx(NoteId);
+function addTodo(noteId) {
+    const noteIdx = _getNoteIdx(noteId);
+    gNotes[noteIdx].info.toDos.push({
+        toDo: 'NEW!',
+        isDone: false,
+    })
+    storageService.saveToStorage('notes', gNotes);
+}
+
+function removeTodo(toDoIdx, noteId) {
+    const noteIdx = _getNoteIdx(noteId);
     gNotes[noteIdx].info.toDos.splice(toDoIdx, 1);
+    storageService.saveToStorage('notes', gNotes);
 }
 
 function createNote(type, val) {
@@ -87,14 +100,53 @@ function createNote(type, val) {
     storageService.saveToStorage('notes', gNotes);
 }
 
-function updateNote(id, val) {
+function updateNote(id, val, toDoIdx) {
+
+    if (toDoIdx) {
+        console.log('hi');
+        const noteIdx = _getNoteIdx(id)
+        gNotes[noteIdx].info.toDos[toDoIdx].toDo = val;
+        storageService.saveToStorage('notes', gNotes);
+        return;
+    }
+
+
     const idx = _getNoteIdx(id);
     gNotes[idx].info.caption = val;
     storageService.saveToStorage('notes', gNotes);
 }
 
-function query() {
-    return Promise.resolve(gNotes)
+function queryPinned(searchBy) {
+    const pinnedNotes = gNotes.filter(note => note.isPinned);
+
+    if (searchBy) {
+        const filteredNotes = pinnedNotes.filter((note, idx) => {
+            if (note.type === 'toDoNote') {
+                return note.info.toDos[idx].toDo.includes(searchBy)
+            } else {
+                return note.info.caption.includes(searchBy);
+            }
+        })
+        return Promise.resolve(filteredNotes);
+    }
+    return Promise.resolve(pinnedNotes)
+}
+
+function queryUnpinned(searchBy) {
+
+    const unpinnedNotes = gNotes.filter(note => !note.isPinned);
+
+    if (searchBy) {
+        const filteredNotes = unpinnedNotes.filter((note, idx) => {
+            if (note.type === 'toDoNote') {
+                return note.info.toDos[idx].toDo.includes(searchBy)
+            } else {
+                return note.info.caption.includes(searchBy);
+            }
+        })
+        return Promise.resolve(filteredNotes);
+    }
+    return Promise.resolve(unpinnedNotes)
 }
 
 function _getNoteIdx(id) {
@@ -117,9 +169,7 @@ function noteColorChange(id, color) {
     const noteIdx = _getNoteIdx(id)
     gNotes[noteIdx].color = color
     storageService.saveToStorage('notes', gNotes);
-
 }
-
 
 function toggleDone(toDoIdx, NoteId) {
     const idx = _getNoteIdx(NoteId);

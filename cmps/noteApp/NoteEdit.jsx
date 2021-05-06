@@ -5,6 +5,13 @@ export class NoteEdit extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.toDo) {
+            this.setState({
+                val: this.props.toDo,
+            })
+            return;
+        }
+
         this.setState({
             val: this.props.note.info.caption
         })
@@ -13,17 +20,24 @@ export class NoteEdit extends React.Component {
     handleChange = (ev) => {
         const field = ev.target.name;
         const val = ev.target.value;
-        this.setState({ [field]: val })
+        this.setState({ [field]: val });
     }
 
     changeNote = () => {
         const val = this.state.val
-        const id = this.props.note.id
-        this.props.onUpdateNote(id, val)
+
+        if (this.props.toDo) {
+            const id = this.props.noteId;
+            const idx = this.props.idx;
+            this.props.onUpdateNote(id, val, idx)
+            this.props.toggleEdit();
+            return
+        }
+
+        const id = this.props.note.id;
+        this.props.onUpdateNote(id, val);
         this.props.toggleEditNote();
     }
-    
-
 
     render() {
         return (

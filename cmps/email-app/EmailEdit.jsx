@@ -24,7 +24,7 @@ export class EmailEdit extends React.Component {
                 bcc: '',
                 subject: `Re: ${mail.title}`,
                 content: mail.content,
-            } }), () => console.log(this.state))
+            } }))
         }
     }
 
