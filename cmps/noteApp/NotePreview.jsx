@@ -3,23 +3,24 @@ import { ImgNote } from './ImgNote.jsx'
 import { VidNote } from './VidNote.jsx'
 import { ToDoNote } from './ToDoNote.jsx'
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange }) {
 
     function NoteTypePicker(type) {
         switch (type) {
             case 'txtNote':
-                return <TxtNote onUpdateNote={onUpdateNote}  onRemoveNote={onRemoveNote} note={note} />
+                return <TxtNote onNoteColorChange={onNoteColorChange} onPinned={onPinned} onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note} />
             case 'imgNote':
-                return <ImgNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+                return <ImgNote onNoteColorChange={onNoteColorChange} onPinned={onPinned} onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note} />
             case 'toDoNote':
-                return <ToDoNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+                return <ToDoNote onNoteColorChange={onNoteColorChange} onPinned={onPinned} onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note} />
             case 'vidNote':
-                return <VidNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+                return <VidNote onNoteColorChange={onNoteColorChange} onPinned={onPinned} onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note} />
             default:
                 console.log('something went wrong'); //...some default error view
         }
     }
     const { type } = note
+
     return (
         NoteTypePicker(type)
     )

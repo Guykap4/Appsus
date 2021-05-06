@@ -22,11 +22,11 @@ export class ToDoNote extends React.Component {
     render() {
         if (!this.state.note) return <div>Loading...</div>
         return (
-            <div className="todo-note note">
+            <div style={{ backgroundColor: this.state.note.color }} className="todo-note note">
                 <div className="note-content">
                     {this.renderTodos(this.state.note.info.toDos)}
                 </div>
-                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note} />
+                <NoteMenu onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} onRemoveNote={this.props.onRemoveNote} note={this.state.note} />
             </div>
         )
     }

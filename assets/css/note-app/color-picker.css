@@ -1,0 +1,39 @@
+.picker-pallet-options {
+    display: flex;
+    background-color: whitesmoke;
+    position: absolute;
+    bottom: -32px;
+    right: 80px;
+    gap: 5px;
+    border: 2px solid black;
+}
+
+.color-picker-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.teal {
+    background-color: teal;
+}
+
+.purple {
+    background-color: purple;
+}

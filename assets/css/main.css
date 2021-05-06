@@ -13,6 +13,7 @@
 @import url("./note-app/vid-note.css");
 @import url("./note-app/note-editor.css");
 @import url("./note-app/note-add.css");
+@import url("./note-app/color-picker.css");
 
 main {
     flex-grow: 1;
