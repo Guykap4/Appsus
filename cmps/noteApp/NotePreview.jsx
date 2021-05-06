@@ -3,25 +3,29 @@ import { ImgNote } from './ImgNote.jsx'
 import { VidNote } from './VidNote.jsx'
 import { ToDoNote } from './ToDoNote.jsx'
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange, onRemoveTodo, onToggleDone, onAddTodo }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange, onRemoveTodo, onToggleDone, onAddTodo, onCopyToClipboard }) {
 
     function NoteTypePicker(type) {
         switch (type) {
             case 'txtNote':
                 return <TxtNote
+                onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onUpdateNote={onUpdateNote}
                     onRemoveNote={onRemoveNote}
                     note={note} />
             case 'imgNote':
-                return <ImgNote onNoteColorChange={onNoteColorChange}
+                return <ImgNote
+                onCopyToClipboard={onCopyToClipboard}
+                 onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onUpdateNote={onUpdateNote}
                     onRemoveNote={onRemoveNote}
                     note={note} />
             case 'toDoNote':
                 return <ToDoNote
+                onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onAddTodo={onAddTodo}
@@ -32,6 +36,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNote
                     note={note} />
             case 'vidNote':
                 return <VidNote
+                onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned} onUpdateNote={onUpdateNote}
                     onRemoveNote={onRemoveNote}

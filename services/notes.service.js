@@ -12,6 +12,7 @@ export const noteService = {
     removeTodo,
     toggleDone,
     addTodo,
+    copyToClipboard,
 }
 
 function addTodo(noteId) {
@@ -175,6 +176,30 @@ function toggleDone(toDoIdx, NoteId) {
     const idx = _getNoteIdx(NoteId);
     gNotes[idx].info.toDos[toDoIdx].isDone = !gNotes[idx].info.toDos[toDoIdx].isDone
     storageService.saveToStorage('notes', gNotes);
+}
+
+function copyToClipboard(noteId) {
+    const noteIdx = _getNoteIdx(noteId)
+    const note = gNotes[noteIdx]
+    let copyTxt=''
+    switch (note.type) {
+        case 'txtNote':
+            copyTxt = ['Note: ', note.info.caption]
+            break;
+        case 'toDoNote':
+            note.info.toDos.map((todo) => {
+                copyTxt += todo.toDo+'\n'
+            })
+            break;
+        case 'imgNote':
+            copyTxt = [note.info.caption, note.info.url]
+            break;
+        case 'vidNote':
+            copyTxt = [note.info.caption, note.info.url]
+            break;
+    }
+
+    return navigator.clipboard.writeText((copyTxt) + '\n\nCopied from Appsus MissKeep')
 }
 
 const gNotes = storageService.loadFromStorage('notes') || [

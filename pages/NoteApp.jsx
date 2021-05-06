@@ -66,6 +66,11 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
 
+    onCopyToClipboard = (txt) => {
+        noteService.copyToClipboard(txt)
+        this.loadNotes()
+    }
+
     onAddTodo = (noteId) => {
         noteService.addTodo(noteId);
         this.loadNotes();
@@ -92,6 +97,7 @@ export class NoteApp extends React.Component {
                         onRemoveTodo={this.onRemoveTodo}
                         onUpdateNote={this.onUpdateNote}
                         onRemoveNote={this.onRemoveNote}
+                        onCopyToClipboard={this.onCopyToClipboard}
                         notes={this.state.pinnedNotes} />}
 
                 {this.state.unpinnedNotes &&
@@ -104,7 +110,8 @@ export class NoteApp extends React.Component {
                         onRemoveTodo={this.onRemoveTodo}
                         onUpdateNote={this.onUpdateNote}
                         onRemoveNote={this.onRemoveNote}
-                        notes={this.state.unpinnedNotes} />}
+                        notes={this.state.unpinnedNotes}
+                        onCopyToClipboard={this.onCopyToClipboard} />}
             </React.Fragment>
         )
     }
