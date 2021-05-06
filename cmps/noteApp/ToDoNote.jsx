@@ -31,7 +31,7 @@ export class ToDoNote extends React.Component {
                     {this.renderTodos(this.state.note.info.toDos)}
                 </div>
                 <button onClick={this.props.onAddTodo}><img src="../../assets/img/plus-icon.png" /></button>
-                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note}onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned}  />
+                <NoteMenu onRemoveNote={this.props.onRemoveNote} note={this.state.note}onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} onCopyToClipboard={this.props.onCopyToClipboard}  />
             </div>
         )
     }

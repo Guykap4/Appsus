@@ -1,5 +1,5 @@
 import { NotePreview } from './NotePreview.jsx'
-export function NoteList({ notes, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange,onRemoveTodo ,onToggleDone}) {
+export function NoteList({ notes, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange,onRemoveTodo ,onToggleDone,onCopyToClipboard}) {
 
   return (
       <div className="note-list">
@@ -10,6 +10,7 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote, onPinned, onNoteCo
           onRemoveTodo={onRemoveTodo}
           onUpdateNote={onUpdateNote}
           onRemoveNote={onRemoveNote}
+          onCopyToClipboard={onCopyToClipboard}
           note={note} key={note.id} />)}
       </div>
   )

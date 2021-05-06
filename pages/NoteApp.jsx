@@ -52,6 +52,10 @@ export class NoteApp extends React.Component {
         noteService.toggleDone(toDoIdx, NoteId);
         this.loadNotes();
     }
+    onCopyToClipboard = (txt) => {
+        noteService.copyToClipboard(txt)
+        this.loadNotes()
+    }
 
     render() {
         return (
@@ -65,6 +69,7 @@ export class NoteApp extends React.Component {
                         onRemoveTodo={this.onRemoveTodo}
                         onUpdateNote={this.onUpdateNote}
                         onRemoveNote={this.onRemoveNote}
+                        onCopyToClipboard={this.onCopyToClipboard}
                         notes={this.state.notes} />}
             </React.Fragment>
 

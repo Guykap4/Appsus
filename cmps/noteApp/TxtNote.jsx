@@ -17,17 +17,18 @@ export class TxtNote extends React.Component {
         })
     }
 
+
     render() {
         if (!this.state.note) return <div>Loading...</div>
         const caption = this.state.note.info.caption;
         return (
-            <div style={{backgroundColor: this.state.note.color}} className="txt-note note">
+            <div style={{ backgroundColor: this.state.note.color }} className="txt-note note">
                 <div className="note-content">
                     {this.state.isEdit ?
                         <NoteEdit toggleEditNote={this.toggleEditNote} note={this.state.note} onUpdateNote={this.props.onUpdateNote} /> :
                         <div onClick={this.toggleEditNote}>{caption}</div>}
                 </div>
-                <NoteMenu onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} onRemoveNote={this.props.onRemoveNote} note={this.state.note} />
+                <NoteMenu onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} onRemoveNote={this.props.onRemoveNote} onCopyToClipboard={this.props.onCopyToClipboard} note={this.state.note} />
             </div>
         )
     }
