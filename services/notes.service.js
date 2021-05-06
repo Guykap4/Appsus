@@ -1,13 +1,19 @@
 import { utilsService } from './utils.service.js'
 import { storageService } from './storage.service.js'
-import { func } from 'prop-types';
 export const noteService = {
     query,
     removeNote,
     createNote,
     updateNote,
     togglePinned,
-    noteColorChange
+    noteColorChange,
+    removeTodo,
+    toggleDone,
+}
+
+function removeTodo(toDoIdx, NoteId) {
+    const noteIdx = _getNoteIdx(NoteId);
+    gNotes[noteIdx].info.toDos.splice(toDoIdx, 1);
 }
 
 function createNote(type, val) {
@@ -19,7 +25,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'txtNote',
-                color:'yellow',
+                color: 'yellow',
                 isPinned: false,
                 info: {
                     caption: val,
@@ -32,7 +38,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'imgNote',
-                color:'yellow',
+                color: 'yellow',
                 isPinned: false,
                 info: {
                     caption: 'New Image',
@@ -46,7 +52,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'vidNote',
-                color:'yellow',
+                color: 'yellow',
                 isPinned: false,
                 info: {
                     caption: 'New Video',
@@ -60,11 +66,13 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'toDoNote',
-                color:'yellow',
+                color: 'yellow',
                 isPinned: false,
                 info: {
-                    toDos: [
-                        val,
+                    toDos: [{
+                        toDo: val,
+                        isDone: false,
+                    }
                     ]
                 }
             }
@@ -113,11 +121,17 @@ function noteColorChange(id, color) {
 }
 
 
+function toggleDone(toDoIdx, NoteId) {
+    const idx = _getNoteIdx(NoteId);
+    gNotes[idx].info.toDos[toDoIdx].isDone = !gNotes[idx].info.toDos[toDoIdx].isDone
+    storageService.saveToStorage('notes', gNotes);
+}
+
 const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'txtNote',
-        color:'',
+        color: '',
         isPinned: false,
         info: {
             caption: 'im a txt note'
@@ -127,7 +141,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'imgNote',
-        color:'',
+        color: '',
         isPinned: false,
         info: {
             caption: 'im an img note',
@@ -138,13 +152,21 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'toDoNote',
-        color:'',
+        color: '',
         isPinned: false,
         info: {
-            toDos: [
-                'learn javaScript',
-                'learn css',
-                'learn html',
+            toDos: [{
+                toDo: 'learn javaScript',
+                isDone: true,
+            },
+            {
+                toDo: 'learn CSS',
+                isDone: false,
+            },
+            {
+                toDo: 'learn HTML',
+                isDone: false,
+            }
             ]
         }
     },
@@ -152,7 +174,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'vidNote',
-        color:'',
+        color: '',
         isPinned: false,
         info: {
             caption: 'im a vid note',

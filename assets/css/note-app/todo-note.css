@@ -3,3 +3,11 @@
     height: 400px;
     background-color: royalblue;
 }
+
+.todo-note img {
+    width: 30px;
+}
+
+.checked {
+    text-decoration: line-through;
+}

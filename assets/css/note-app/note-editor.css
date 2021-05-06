@@ -6,7 +6,7 @@
 }
 
 .note-editor-icon {
-    width: 50px;
+    width: 30px;
 }
 
 .note-editor-icon img {
@@ -14,5 +14,15 @@
 }
 
 .edit-caption img {
+    width: 30px;
+}
+
+.note-type-icon {
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.note-type-icon img{
     width: 30px;
 }

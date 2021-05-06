@@ -34,20 +34,38 @@ export class NoteApp extends React.Component {
         noteService.updateNote(id, val);
         this.loadNotes();
     }
-    onPinnend =(id)=> {
+    onPinnend = (id) => {
         noteService.togglePinned(id)
         this.loadNotes()
     }
-    onNoteColorChange = (id, color)=>{
+    onNoteColorChange = (id, color) => {
         noteService.noteColorChange(id, color)
         this.loadNotes()
+    }
+
+    onRemoveTodo = (toDoIdx, NoteId) => {
+        noteService.removeTodo(toDoIdx, NoteId);
+        this.loadNotes();
+    }
+
+    onToggleDone = (toDoIdx, NoteId) => {
+        noteService.toggleDone(toDoIdx, NoteId);
+        this.loadNotes();
     }
 
     render() {
         return (
             <React.Fragment>
                 <AddNote addNote={this.addNote} />
-                {this.state.notes && <NoteList onNoteColorChange={this.onNoteColorChange} onPinned={this.onPinnend} onUpdateNote={this.onUpdateNote}  onRemoveNote={this.onRemoveNote} notes={this.state.notes} />}
+                {this.state.notes &&
+                    <NoteList
+                        onPinned={this.onPinnend}
+                        onNoteColorChange={this.onNoteColorChange}
+                        onToggleDone={this.onToggleDone}
+                        onRemoveTodo={this.onRemoveTodo}
+                        onUpdateNote={this.onUpdateNote}
+                        onRemoveNote={this.onRemoveNote}
+                        notes={this.state.notes} />}
             </React.Fragment>
 
         )
