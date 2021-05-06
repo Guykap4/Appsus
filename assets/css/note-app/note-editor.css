@@ -1,0 +1,18 @@
+.note-editor {
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-editor-icon {
+    width: 50px;
+}
+
+.note-editor-icon img {
+    width: 100%;
+}
+
+.edit-caption img {
+    width: 30px;
+}

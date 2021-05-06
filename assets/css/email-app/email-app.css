@@ -15,7 +15,7 @@
 .email-preview {
     display: grid;
     gap: 10px;
-    grid-template-columns: 50px 120px 20fr 50px;
+    grid-template-columns: 50px 120px 20fr 75px;
     padding: 15px;
     border-bottom: 1px #e7c79e solid;
     background-color: #fff3bf;

@@ -1,28 +1,27 @@
-import { NoteTxt } from './NoteTxt.jsx'
-import { NoteImage } from './NoteImage.jsx'
-import { NoteVideo } from './NoteVideo.jsx'
-import { NoteToDo } from './NoteToDo.jsx'
+import { TxtNote } from './TxtNote.jsx'
+import { ImgNote } from './ImgNote.jsx'
+import { VidNote } from './VidNote.jsx'
+import { ToDoNote } from './ToDoNote.jsx'
+
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
-    function dynamicCmp(type) {
+    function NoteTypePicker(type) {
         switch (type) {
-            case 'text':
-                // console.log('text');
-                return <NoteTxt note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} />
-            case 'image':
-                // console.log('image');
-                return <NoteImage note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote}/>
-            case 'todo':
-                return <NoteToDo note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote}/>
-            case 'video':
-                return <NoteVideo note={note} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote}/>
+            case 'txtNote':
+                return <TxtNote onUpdateNote={onUpdateNote}  onRemoveNote={onRemoveNote} note={note} />
+            case 'imgNote':
+                return <ImgNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+            case 'toDoNote':
+                return <ToDoNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
+            case 'vidNote':
+                return <VidNote onUpdateNote={onUpdateNote} onRemoveNote={onRemoveNote} note={note}/>
             default:
-                return 'something went wrong'//...some default error view
+                console.log('something went wrong'); //...some default error view
         }
     }
-    const {type} = note
+    const { type } = note
     return (
-        <div className="note-preview" >{dynamicCmp(type)}</div>
+        NoteTypePicker(type)
     )
 
 }

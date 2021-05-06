@@ -1,46 +1,47 @@
 import { noteService } from '../services/notes.service.js'
-import { NoteInput } from '../cmps/noteApp/InputNote.jsx'
+import { AddNote } from '../cmps/noteApp/AddNote.jsx'
 import { NoteList } from '../cmps/noteApp/NoteList.jsx'
 
 export class NoteApp extends React.Component {
     state = {
-        notes: '',
-        filterBy: {
-            type: '',
-
-        },
+        notes: null,
     }
 
     componentDidMount() {
-
-        this.loadNotes()
+        this.loadNotes();
     }
+
     loadNotes() {
         noteService.query()
-            .then((notes) => {
-                this.setState({ notes })
+            .then(notes => {
+                this.setState({
+                    notes: notes
+                })
             })
     }
 
-    onRemoveNote= (id)=> {
-        noteService.removeNote(id)
-        this.loadNotes()
+    addNote = (type, val) => {
+        noteService.createNote(type, val)
+        this.loadNotes();
     }
-    
-    onUpdateNote = (note) => {
-        noteService.saveNote(note)
-        this.loadNotes()
+
+    onRemoveNote = (id) => {
+        noteService.removeNote(id)
+        this.loadNotes();
+    }
+
+    onUpdateNote = (id, val) => {
+        noteService.updateNote(id, val);
+        this.loadNotes();
     }
 
     render() {
-        const { notes } = this.state
-        if (!notes) return <div>Loading...</div>
         return (
-            <section className="note-app">
-                <NoteInput onUpdateNote={this.onUpdateNote}/>
-                <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onUpdateNote={this.onUpdateNote} />
+            <React.Fragment>
+                <AddNote addNote={this.addNote} />
+                {this.state.notes && <NoteList onUpdateNote={this.onUpdateNote}  onRemoveNote={this.onRemoveNote} notes={this.state.notes} />}
+            </React.Fragment>
 
-            </section>
         )
     }
 }

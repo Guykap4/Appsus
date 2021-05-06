@@ -1,0 +1,20 @@
+.note-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.note {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

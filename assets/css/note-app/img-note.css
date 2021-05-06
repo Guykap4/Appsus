@@ -1,0 +1,10 @@
+.img-note {
+    width: 300px;
+    height: 400px;
+    background-color: tomato;
+}
+
+.img-note img {
+    width: 100%;
+}
+

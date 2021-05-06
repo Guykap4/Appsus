@@ -6,9 +6,14 @@
 @import url("./email-app/search-email.css");
 @import url("./email-app/email-details.css");
 @import url("./email-app/email-edit.css");
-@import url("./note/notes.css");
+@import url("./note-app/notes-app.css");
+@import url("./note-app/img-note.css");
+@import url("./note-app/txt-note.css");
+@import url("./note-app/todo-note.css");
+@import url("./note-app/vid-note.css");
+@import url("./note-app/note-editor.css");
+@import url("./note-app/note-add.css");
 
 main {
     flex-grow: 1;
-    height: calc(100vh - 125px);
 }

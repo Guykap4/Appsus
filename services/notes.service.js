@@ -2,136 +2,136 @@ import { utilsService } from './utils.service.js'
 import { storageService } from './storage.service.js'
 export const noteService = {
     query,
-    // addNote,
     removeNote,
-    // getNoteById,
-    saveNote
+    createNote,
+    updateNote,
 }
 
-//global vars
-const KEY = 'notes'
-var gNotes = ''
-var gKind = ['text', 'image', 'todo', 'video']
+function createNote(type, val) {
+    let newNote = {};
 
-//create the first notes to avoid errors
-_createNotes()
+    switch (type) {
+        case 'txtNote':
 
-//functions
-function query(filterBy) {
-    if (!filterBy) return Promise.resolve(gNotes)
-    var { text, image, todo, video } = filterBy
-    text = text ? text : 'Empty for now'
-    image = image ? image : 'Empty for now'
-    todo = todo ? todo : 'Empty for now'
-    video = video ? video : 'Empty for now'
-    const filteredNotes = gNotes.filter(note => {
-        return note.type.includes(filterBy)
-    })
-    return Promise.resolve(filteredNotes)
-}
-//create set of 5 notes
-function _createNotes() {
-    var notes = storageService.loadFromStorage(KEY)
-    if (!notes || !notes.length) {
-        notes = []
-        for (let i = 0; i < 5; i++) {
-            var kind = gKind[i]
-            notes.push(_createNote(kind))
-        }
-    }
-    gNotes = notes;
-    window.theNotes = gNotes;
-    _saveNotesToStorage();
-    console.log('gNotes', gNotes);
-}
-
-//delete note from gNotes
-function removeNote(id) {
-    let noteIdx = gNotes.findIndex(function (note) {
-        return note.id === id
-    })
-    gNotes.splice(noteIdx, 1)
-    _saveNotesToStorage();
-
-    return Promise.resolve()
-
-}
-
-//save changes or edit the note 
-function saveNote(note) {
-    return note.id!=='' ? _updateNote(note) : _addNote(note)
-}
-
-function _addNote(noteToAdd) {
-    var note = _createNote(noteToAdd)
-    gNotes.unshift(note)
-    _saveNotesToStorage()
-    return Promise.resolve(note)
-}
-
-function _updateNote(noteToUpdate) {
-    var noteIdx = gNotes.findIndex(function (note) {
-        return note.id === noteToUpdate.id
-    })
-    gNotes.splice(noteIdx, 1, noteToUpdate)
-    _saveNotesToStorage();
-    return Promise.resolve(noteToUpdate)
-}
-
-//create one note according to kind
-function _createNote(kind, note) {
-    let cond
-    if (!note) {
-        cond = kind
-    } else {
-        cond = note.type
-    }
-    switch (cond) {
-        case 'text':
-            return {
-                id: note ? note.id : utilsService.makeId(),
-                title: note ? note.title : 'text title',
-                type: note ? note.type : 'text',
-                url:'',
-                content: note ? note.content : 'This is text note'
+            newNote = {
+                id: utilsService.makeId(),
+                type: 'txtNote',
+                isPinned: false,
+                info: {
+                    caption: val,
+                }
             }
-        case 'image':
-            return {
-                id: note ? note.id : utilsService.makeId(),
-                title: note ? note.title : 'text title',
-                type: note ? note.type : 'image',
-                url: note ? note.url : 'some url',
-                content: note ? note.content : 'This is image note'
+
+            break;
+        case 'imgNote':
+
+            newNote = {
+                id: utilsService.makeId(),
+                type: 'imgNote',
+                isPinned: false,
+                info: {
+                    caption: 'New Image',
+                    url: val,
+                }
             }
-        case 'video':
-            return {
-                id: note ? note.id : utilsService.makeId(),
-                title: note ? note.title : 'video title',
-                type: note ? note.type : 'video',
-                url: note ? note.url : 'source url',
-                content: note ? note.content : 'This is video note'
+
+            break;
+        case 'vidNote':
+
+            newNote = {
+                id: utilsService.makeId(),
+                type: 'vidNote',
+                isPinned: false,
+                info: {
+                    caption: 'New Video',
+                    url: val,
+                }
             }
-        case 'todo':
-            return {
-                id: note ? note.id : utilsService.makeId(),
-                title: note ? note.title : 'list title',
-                type: note ? note.type : 'todo',
-                url:'',
-                content: note ? note.content : 'This is todo note'
+            break;
+
+        case 'toDoNote':
+
+            newNote = {
+                id: utilsService.makeId(),
+                type: 'toDoNote',
+                isPinned: false,
+                info: {
+                    toDos: [
+                        val,
+                    ]
+                }
             }
+
+            break;
         default:
-            return {
-                id: note ? note.id : utilsService.makeId(),
-                title: note ? note.title : 'text title',
-                type: note ? note.type : 'text',
-                url:'',
-                content: note ? note.content : 'This is text note'
-            }
-        // return 'something'
+            console.log('type:', type, 'val', val);
+            break;
     }
+
+    gNotes.unshift(newNote);
+    storageService.saveToStorage('notes', gNotes);
 }
 
-//save to storae
-function _saveNotesToStorage() {
-    storageService.saveToStorage(KEY, gNotes)
+function updateNote(id, val) {
+    const idx = _getNoteIdx(id);
+    gNotes[idx].info.caption = val;
+    storageService.saveToStorage('notes', gNotes);
 }
+
+function query() {
+    return Promise.resolve(gNotes)
+}
+
+function _getNoteIdx(id) {
+    return gNotes.findIndex(note => note.id === id);
+}
+
+function removeNote(id) {
+    const idx = _getNoteIdx(id);
+    gNotes.splice(idx, 1);
+    storageService.saveToStorage('notes', gNotes);
+}
+
+const gNotes = storageService.loadFromStorage('notes') || [
+    {
+        id: utilsService.makeId(),
+        type: 'txtNote',
+        isPinned: false,
+        info: {
+            caption: 'im a txt note'
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'imgNote',
+        isPinned: false,
+        info: {
+            caption: 'im an img note',
+            url: 'https://static.thaiflirting.com/site/img/slide2.jpg'
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'toDoNote',
+        isPinned: false,
+        info: {
+            toDos: [
+                'learn javaScript',
+                'learn css',
+                'learn html',
+            ]
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'vidNote',
+        isPinned: false,
+        info: {
+            caption: 'im a vid note',
+            url: 'https://www.youtube.com/embed/watch?v=dQw4w9WgXcQ'
+        }
+    },
+]
