@@ -23,7 +23,7 @@ export class VidNote extends React.Component {
         return (
             <div style={{backgroundColor: this.state.note.color}} className="vid-note note">
                 <div className="note-content">
-                    <iframe width="250" height="200" src={url} title="YouTube video player"
+                    <iframe className="i-frame" width="250" height="200" src={url} title="YouTube video player"
                         frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
                         gyroscope; picture-in-picture" allowFullScreen>
                         </iframe>

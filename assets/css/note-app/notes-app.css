@@ -1,6 +1,11 @@
+.i-frame {
+    width: 150px;
+    height: 120px;
+}
+
 .note-list {
     margin: 20px;
-    columns: 1;
+    columns: 2;
     background-color: #ececec;
     column-gap: 5px;
     align-items: center;
@@ -16,7 +21,7 @@
 }
 
 .note {
-    width: 200px;
+    width: 160px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -53,6 +58,15 @@
     .note-list {
         columns: 2;
     }
+
+    .note {
+        width: 200px;
+    }
+
+    .i-frame {
+        width: 190px;
+        height: 120px;
+    }
 }
 
 @media (min-width: 690px) {
@@ -62,6 +76,11 @@
 
     .note {
         width: 300px;
+    }
+
+    .i-frame {
+        width: 250px;
+        height: 200px;
     }
 }
 
