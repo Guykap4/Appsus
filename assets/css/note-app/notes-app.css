@@ -1,8 +1,18 @@
 .note-list {
     margin: 20px;
     columns: 1;
+    background-color: #ececec;
     column-gap: 5px;
     align-items: center;
+}
+
+.headline{
+    background-color: #ececec;
+    font-size: 30px;
+    font-family: Kalam;
+    font-weight: bold;
+    user-select: none;
+    padding: 20px;
 }
 
 .note {

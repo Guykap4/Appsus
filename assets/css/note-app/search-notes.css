@@ -1,0 +1,30 @@
+.search-box{
+    background-color:#ececec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    height: 20px;
+    padding: 0 15px 0 15px;
+    margin-bottom: 20px;
+
+}
+
+.note-search label img{
+    width: 25px;
+    margin: 5px;
+}
+
+.note-search input{
+    align-self: center;
+    justify-content: center;
+    height: 30px;
+    outline: none;
+    border: none;
+}

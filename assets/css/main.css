@@ -16,7 +16,9 @@
 @import url("./note-app/note-add.css");
 @import url("./note-app/color-picker.css");
 @import url("./note-app/line-edit.css");
+@import url("./note-app/search-notes.css");
 
 main {
     flex-grow: 1;
+    background-color: #ececec;
 }
