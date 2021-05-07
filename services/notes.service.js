@@ -103,8 +103,7 @@ function createNote(type, val) {
 
 function updateNote(id, val, toDoIdx) {
 
-    if (toDoIdx) {
-        console.log('hi');
+    if (toDoIdx || toDoIdx === 0) {
         const noteIdx = _getNoteIdx(id)
         gNotes[noteIdx].info.toDos[toDoIdx].toDo = val;
         storageService.saveToStorage('notes', gNotes);
@@ -123,7 +122,7 @@ function queryPinned(searchBy) {
     if (searchBy) {
         const filteredNotes = pinnedNotes.filter((note, idx) => {
             if (note.type === 'toDoNote') {
-                return note.info.toDos[idx].toDo.includes(searchBy)
+                return note.info.toDos[idx].toDo.toLowerCase().includes(searchBy.toLowerCase())
             } else {
                 return note.info.caption.includes(searchBy);
             }
@@ -140,7 +139,7 @@ function queryUnpinned(searchBy) {
     if (searchBy) {
         const filteredNotes = unpinnedNotes.filter((note, idx) => {
             if (note.type === 'toDoNote') {
-                return note.info.toDos[idx].toDo.includes(searchBy)
+                return note.info.toDos[idx].toDo.toLowerCase().includes(searchBy.toLowerCase())
             } else {
                 return note.info.caption.includes(searchBy);
             }

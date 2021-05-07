@@ -43,7 +43,7 @@ export class AddNote extends React.Component {
 
                     <form>
                         <input checked={this.state.type === 'txtNote'} onChange={this.onSetNoteType} type="radio" name="val" value="txtNote" id="txt" hidden />
-                        <label htmlFor="txt"><img src="../../assets/img/a-icon.png" /></label>
+                        <label htmlFor="txt"><img src="assets/img/a-icon.png" /></label>
 
                         <input checked={this.state.type === 'imgNote'} onChange={this.onSetNoteType} type="radio" name="val" value="imgNote" id="img" hidden />
                         <label htmlFor="img"><img src="../../assets/img/img-icon.png" /></label>
