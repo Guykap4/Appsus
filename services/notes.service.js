@@ -39,7 +39,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'txtNote',
-                color: 'yellow',
+                color: 'rgb(255 243 191)',
                 isPinned: false,
                 info: {
                     caption: val,
@@ -52,7 +52,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'imgNote',
-                color: 'yellow',
+                color: 'rgb(255 243 191)',
                 isPinned: false,
                 info: {
                     caption: 'New Image',
@@ -66,7 +66,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'vidNote',
-                color: 'yellow',
+                color: 'rgb(255 243 191)',
                 isPinned: false,
                 info: {
                     caption: 'New Video',
@@ -80,7 +80,7 @@ function createNote(type, val) {
             newNote = {
                 id: utilsService.makeId(),
                 type: 'toDoNote',
-                color: 'yellow',
+                color: 'rgb(255 243 191)',
                 isPinned: false,
                 info: {
                     toDos: [{
