@@ -26,7 +26,7 @@ export class TxtNote extends React.Component {
                 <div className="note-content">
                     {this.state.isEdit ?
                         <NoteEdit toggleEditNote={this.toggleEditNote} note={this.state.note} onUpdateNote={this.props.onUpdateNote} /> :
-                        <div onClick={this.toggleEditNote}>{caption}</div>}
+                        <div className="note-caption img-caption" onClick={this.toggleEditNote}>{caption}</div>}
                 </div>
                 <NoteMenu onNoteColorChange={this.props.onNoteColorChange} onPinned={this.props.onPinned} onRemoveNote={this.props.onRemoveNote} onCopyToClipboard={this.props.onCopyToClipboard} note={this.state.note} />
             </div>

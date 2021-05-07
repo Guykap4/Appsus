@@ -206,7 +206,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'txtNote',
-        color: '',
+        color: 'rgb(255 243 191)',
         isPinned: false,
         info: {
             caption: 'im a txt note'
@@ -216,7 +216,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'imgNote',
-        color: '',
+        color: 'rgb(255 243 191)',
         isPinned: false,
         info: {
             caption: 'im an img note',
@@ -227,7 +227,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'toDoNote',
-        color: '',
+        color: 'rgb(255 243 191)',
         isPinned: false,
         info: {
             toDos: [{
@@ -249,7 +249,7 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'vidNote',
-        color: '',
+        color: 'rgb(255 243 191)',
         isPinned: false,
         info: {
             caption: 'im a vid note',

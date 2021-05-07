@@ -1,0 +1,24 @@
+.edit-caption img {
+    width: 20px;
+}
+
+.edit-caption input {
+    border: none;
+    background-color: unset;
+    font-family: Kalam;
+    outline: none;
+}
+
+.edit-caption button {
+    cursor: pointer;
+    background-color: unset;
+    border: unset;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+}
+
+.edit-caption button:hover {
+    background-color: rgba(0, 0, 0, 0.219);
+}
