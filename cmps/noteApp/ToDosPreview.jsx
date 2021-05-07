@@ -20,13 +20,13 @@ export class ToDosPreview extends React.Component {
         return (
             <React.Fragment>
                 <div className={isDone ? 'checked todo-item' : 'todo-item'}>
-                    <img className="checkbox" onClick={() => { onToggleDone(idx, noteId) }} src={`../../assets/img/${isDone ? 'checked-square-icon' : 'square-icon'}.png`} />
+                    <img className="checkbox" onClick={() => { onToggleDone(idx, noteId) }} src={`assets/img/${isDone ? 'checked-square-icon' : 'square-icon'}.png`} />
                     {this.state.isEdit ? <NoteEdit onUpdateNote={onUpdateNote} toggleEdit={this.toggleEdit} toDo={toDo} idx={idx} noteId={noteId} /> : <React.Fragment><span className="note-caption" onClick={this.toggleEdit}>{toDo}</span>
                     <div className="delete-btn-container">
                         <button className="remove-btn" onClick={(ev) => {
                             ev.stopPropagation();
                             this.props.onRemoveTodo(idx, this.props.note.id)
-                        }}><img src="../../assets/img/x-icon.png" /></button>
+                        }}><img src="assets/img/x-icon.png" /></button>
                     </div></React.Fragment>}
                 </div>
             </React.Fragment>

@@ -37,7 +37,7 @@ export class AddNote extends React.Component {
             <div className="container">
                 <section className="add-note-container">
 
-                    <img onClick={this.onAddNote} className="left-border-radius" src="../../assets/img/plus-icon.png" />
+                    <img onClick={this.onAddNote} className="left-border-radius" src="assets/img/plus-icon.png" />
 
                     <input ref={this.inputRef} className="left-border-radius" type="text" name="val" id="val" onChange={this.handleChange} value={this.state.val} />
 
@@ -46,13 +46,13 @@ export class AddNote extends React.Component {
                         <label htmlFor="txt"><img src="assets/img/a-icon.png" /></label>
 
                         <input checked={this.state.type === 'imgNote'} onChange={this.onSetNoteType} type="radio" name="val" value="imgNote" id="img" hidden />
-                        <label htmlFor="img"><img src="../../assets/img/img-icon.png" /></label>
+                        <label htmlFor="img"><img src="assets/img/img-icon.png" /></label>
 
                         <input checked={this.state.type === 'vidNote'} onChange={this.onSetNoteType} type="radio" name="val" value="vidNote" id="vid" hidden />
-                        <label htmlFor="vid"><img src="../../assets/img/vid-icon.ico" /></label>
+                        <label htmlFor="vid"><img src="assets/img/vid-icon.ico" /></label>
 
                         <input checked={this.state.type === 'toDoNote'} onChange={this.onSetNoteType} type="radio" name="val" value="toDoNote" id="todo" hidden />
-                        <label htmlFor="todo"><img className="right-border-radius" src="../../assets/img/todo-icon.png" /></label>
+                        <label htmlFor="todo"><img className="right-border-radius" src="assets/img/todo-icon.png" /></label>
                     </form>
                 </section>
             </div>

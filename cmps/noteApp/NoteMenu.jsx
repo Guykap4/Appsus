@@ -19,19 +19,19 @@ export class NoteMenu extends React.Component {
         let typeIconUrl;
         switch (type) {
             case 'txtNote':
-                typeIconUrl = '../../assets/img/a-icon.png'
+                typeIconUrl = 'assets/img/a-icon.png'
                 break;
 
             case 'imgNote':
-                typeIconUrl = '../../assets/img/img-icon.png'
+                typeIconUrl = 'assets/img/img-icon.png'
                 break;
 
             case 'vidNote':
-                typeIconUrl = '../../assets/img/vid-icon.ico'
+                typeIconUrl = 'assets/img/vid-icon.ico'
                 break;
 
             case 'toDoNote':
-                typeIconUrl = '../../assets/img/todo-icon.png'
+                typeIconUrl = 'assets/img/todo-icon.png'
                 break;
 
             default:
@@ -52,11 +52,11 @@ export class NoteMenu extends React.Component {
         return (
             <div className="note-editor">
                 <div className="note-type-icon"><img src={this.NoteTypeIcon} /></div>
-                <div onClick={() => { this.props.onPinned(this.state.note.id) }} className={`note-editor-icon ${this.state.note.isPinned ? 'pinned' : ''}`}><img src="../../assets/img/pin-icon.png" /></div>
-                <div onClick={() => { this.toggleColorpicker() }} className="note-editor-icon"><img src="../../assets/img/color-icon.png" /></div>
+                <div onClick={() => { this.props.onPinned(this.state.note.id) }} className={`note-editor-icon ${this.state.note.isPinned ? 'pinned' : ''}`}><img src="assets/img/pin-icon.png" /></div>
+                <div onClick={() => { this.toggleColorpicker() }} className="note-editor-icon"><img src="assets/img/color-icon.png" /></div>
                     {this.state.isPickerOpen && <ColorPickerPallet onNoteColorChange={this.props.onNoteColorChange} toggleColorpicker={this.toggleColorpicker} noteId={this.state.note.id} />}
-                <div onClick={() => { this.copyToClipboard() }} className="note-editor-icon"><img src="../../assets/img/copy-icon.ico" /></div>
-                <div onClick={() => this.props.onRemoveNote(this.state.note.id)} className="note-editor-icon"><img src="../../assets/img/trash-icon.png" /></div>
+                <div onClick={() => { this.copyToClipboard() }} className="note-editor-icon"><img src="assets/img/copy-icon.ico" /></div>
+                <div onClick={() => this.props.onRemoveNote(this.state.note.id)} className="note-editor-icon"><img src="assets/img/trash-icon.png" /></div>
             </div>
         )
     }
