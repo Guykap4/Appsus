@@ -1,3 +1,7 @@
 .txt-note {
     background-color: lightsalmon;
 }
+
+* {
+    color: lightgray;
+}
