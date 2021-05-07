@@ -55,7 +55,6 @@ export class EmailEdit extends React.Component {
     }
 
     render() {
-        console.log('render');
         return (
             <div className="new-email-container">
                 <div className="compose-header">

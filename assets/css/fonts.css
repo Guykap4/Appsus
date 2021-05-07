@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'C&L';
+    src: url(../font/Champagne\ &\ Limousines.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'C&L';
+    src: url(../font/Champagne\ &\ Limousines\ bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url(../font/Kalam-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url(../font/Kalam-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}

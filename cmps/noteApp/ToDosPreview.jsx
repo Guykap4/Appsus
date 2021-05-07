@@ -19,7 +19,7 @@ export class ToDosPreview extends React.Component {
         
         return (
             <React.Fragment>
-            {this.state.isEdit? <NoteEdit onUpdateNote={onUpdateNote} toggleEdit={this.toggleEdit} toDo={toDo} idx={idx} noteId={noteId} /> : <div className={isDone ? 'checked' : ''}>
+            {this.state.isEdit? <NoteEdit onUpdateNote={onUpdateNote} toggleEdit={this.toggleEdit} toDo={toDo} idx={idx} noteId={noteId} /> : <div className={isDone ? 'checked todo-item' : 'todo-item'}>
                 <img onClick={() => {onToggleDone(idx, noteId) }} src={`../../assets/img/${isDone ? 'checked-square-icon' : 'square-icon'}.png`} />
                 <span onClick={this.toggleEdit}>{toDo}</span>
                 <button onClick={(ev) => {

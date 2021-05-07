@@ -1,11 +1,25 @@
-.todo-note {
-    width: 300px;
-    height: 400px;
-    background-color: royalblue;
+.todo-note .note-content {
+    align-items: flex-start;
+}
+
+.todo-note .note-content button {
+    margin-top: 10px;
+    align-self: center;
 }
 
 .todo-note img {
     width: 30px;
+}
+
+.todo-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.todo-item button {
+    justify-self: flex-end;
 }
 
 .checked {
