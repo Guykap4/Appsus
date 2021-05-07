@@ -14,7 +14,6 @@ export class NoteApp extends React.Component {
 
     componentDidMount() {
         this.loadNotes();
-        console.log(this.state)
     }
 
     loadNotes() {
@@ -77,7 +76,6 @@ export class NoteApp extends React.Component {
     }
 
     onSearch = (val) => {
-        console.log(val);
         this.setState({
             searchBy: val
         }, this.loadNotes)

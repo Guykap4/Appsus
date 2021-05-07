@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(230, 230, 230, 0.651);
     border-radius: 3px;
     height: 60px;
     padding: 0 15px 0 15px;
@@ -33,10 +32,11 @@
 }
 
 .container {
+    background-color: #d3d3d36e;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 5px;
 }
 
 input[type="radio"]:checked+label img {
