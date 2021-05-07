@@ -1,19 +1,19 @@
-export function ColorPickerPallet({ toggleColorpicker, noteId,onNoteColorChange}){
+export function ColorPickerPallet({ toggleColorpicker, noteId, onNoteColorChange }) {
 
     function pickColor(color) {
         onNoteColorChange(noteId, color)
         toggleColorpicker()
-}
+    }
 
 
     return (
         <div className="picker-pallet-options">
-            <div onClick={() => { pickColor('red') } } className="color-picker-option red"></div>
-            <div onClick={() => { pickColor('green') } } className="color-picker-option green"></div>
-            <div onClick={() => { pickColor('blue') }} className="color-picker-option blue"></div>
-            <div onClick={() => {pickColor('yellow')} } className="color-picker-option yellow"></div>
-            <div onClick={() => { pickColor('teal') }} className="color-picker-option teal"></div>
-            <div onClick={() => {pickColor('purple')} } className="color-picker-option purple"></div>
+                <div onClick={() => { pickColor('#da0101') }} className="color-picker-option red"></div>
+                <div onClick={() => { pickColor('#5cc077') }} className="color-picker-option green"></div>
+                <div onClick={() => { pickColor('#62a8e4') }} className="color-picker-option lightBlue"></div>
+                <div onClick={() => { pickColor('#fff3bf') }} className="color-picker-option lightyellow"></div>
+                <div onClick={() => { pickColor('#91a91f') }} className="color-picker-option lightgreen"></div>
+                <div onClick={() => { pickColor('#ff65a3') }} className="color-picker-option pink"></div>
         </div>
     )
 }
