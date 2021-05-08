@@ -2,11 +2,18 @@
     width: 20px;
 }
 
+.edit-caption {
+    width: 100%;
+    display: flex;
+}
+
 .edit-caption input {
     border: none;
     background-color: unset;
     font-family: Kalam;
     outline: none;
+    width: 70%;
+    flex-grow: 1;
 }
 
 .edit-caption button {
@@ -21,4 +28,10 @@
 
 .edit-caption button:hover {
     background-color: rgba(0, 0, 0, 0.219);
+}
+
+@media (min-width: 600px) {
+    .edit-caption input {
+        width: 80%;
+    }
 }

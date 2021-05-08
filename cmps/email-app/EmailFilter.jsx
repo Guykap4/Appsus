@@ -1,3 +1,5 @@
+import { eventBusService } from '../../services/event-bus-service.js'
+
 export class EmailFilter extends React.Component {
     state = {
         search: null,
@@ -13,9 +15,14 @@ export class EmailFilter extends React.Component {
         })
     }
 
+    onToggleMenu() {
+        eventBusService.emit('toggleEmailMenu');
+    }
+
     render() {
         return (
             <div className="search-email">
+                <img onClick={this.onToggleMenu} className="email-menu-btn" src="./assets/img/menu-icon.png" />
                 <label htmlFor="text"><img src="./assets/img/search-icon.png" /></label>
                 <input type="text" name="search" id="search" placeholder="search mail" onChange={this.handleChange} />
                 <select name="filter" id="filter" onChange={this.handleChange}>

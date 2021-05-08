@@ -4,6 +4,7 @@ import { emailService } from '../services/email.service.js'
 import { EmailList } from '../cmps/email-app/EmailList.jsx'
 import { EmailEdit } from '../cmps/email-app/EmailEdit.jsx'
 import { EmailSidebar } from '../cmps/email-app/EmailSidebar.jsx'
+import { eventBusService } from '../services/event-bus-service.js' 
 
 export class EmailApp extends React.Component {
 
@@ -28,6 +29,7 @@ export class EmailApp extends React.Component {
         emailService.deleteEmail(id)
         console.log('deleted!');
         this.loadEmails();
+        eventBusService.emit('userMsg', 'Mail Deleted!')
     }
 
     onAddEmail = ({ to, subject, content }) => {

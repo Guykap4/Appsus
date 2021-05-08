@@ -31,6 +31,7 @@ export class NoteEdit extends React.Component {
             const idx = this.props.idx;
             this.props.onUpdateNote(id, val, idx)
             this.props.toggleEdit();
+            console.log(id, val, idx);
             return
         }
 
@@ -42,8 +43,8 @@ export class NoteEdit extends React.Component {
     render() {
         return (
             <div className="edit-caption">
-                <input type="text" name="val" value={this.state.val} onChange={this.handleChange} />
-                <button onClick={this.changeNote}><img src="../../assets/img/v-icon.png" /></button>
+                <input autoFocus type="text" name="val" value={this.state.val} onChange={this.handleChange} />
+                <button onClick={this.changeNote}><img src="assets/img/v-icon.png" /></button>
             </div>
         )
     }

@@ -3,7 +3,7 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote, onPinned, onNoteCo
 
   function getHeadline() {
     if (!notes || notes.length === 0) return
-    return notes[0].isPinned ? 'Pinned Notes' : 'Unpinned Notes'
+    return notes[0].isPinned ? 'Pinned Notes' : 'Unpinned Notes';
   }
 
 

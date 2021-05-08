@@ -48,6 +48,10 @@
     justify-content: flex-start;
 }
 
+.todo-item .note-caption {
+    width: 55%;
+}
+
 .delete-btn-container {
     flex-grow: 1;
     text-align: right;
@@ -62,4 +66,16 @@
 
 .checked {
     text-decoration: line-through;
+}
+
+@media (min-width: 600px) {
+    .todo-item .note-caption {
+        width: 60%;
+    }
+}
+
+@media (min-width: 690px) {
+    .todo-item .note-caption {
+        width: 70%;
+    }
 }

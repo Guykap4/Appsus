@@ -1,11 +1,13 @@
 .email-details {
     padding: 20px 40px 20px 40px;
     border-bottom: 3px #e7c79e solid;
+    background-color: #FFFFFF;
 }
 
 .email-details .email-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .email-btn {
@@ -24,11 +26,15 @@
 }
 
 .email-details h2 {
-    font-size: 30px;
+    font-size: 35px;
+    font-family: PlayFairDisplay;
 }
 
 .email-details h3 {
     font-size: 23px;
+    margin: 10px 0 20px 0;
+    font-family: 'C&L';
+    font-weight: bold;
 }
 
 .email-details button img {
@@ -37,6 +43,8 @@
 
 .email-details-content {
     margin-top: 10px;
+    font-family: 'C&L';
+    font-size: 18px;
 }
 
 .description-title-span {

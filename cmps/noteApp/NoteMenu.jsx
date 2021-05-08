@@ -19,19 +19,19 @@ export class NoteMenu extends React.Component {
         let typeIconUrl;
         switch (type) {
             case 'txtNote':
-                typeIconUrl = '../../assets/img/a-icon.png'
+                typeIconUrl = 'assets/img/a-icon.png'
                 break;
 
             case 'imgNote':
-                typeIconUrl = '../../assets/img/img-icon.png'
+                typeIconUrl = 'assets/img/img-icon.png'
                 break;
 
             case 'vidNote':
-                typeIconUrl = '../../assets/img/vid-icon.ico'
+                typeIconUrl = 'assets/img/vid-icon.ico'
                 break;
 
             case 'toDoNote':
-                typeIconUrl = '../../assets/img/todo-icon.png'
+                typeIconUrl = 'assets/img/todo-icon.png'
                 break;
 
             default:

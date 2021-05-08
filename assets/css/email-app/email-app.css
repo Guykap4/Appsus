@@ -1,6 +1,7 @@
 .email-app-container {
     display: flex;
     height: 100%;
+    background-color: #f8f8f8;
 }
 
 .email-content {
@@ -9,7 +10,7 @@
 
 .email-list {
     height: calc(100vh - 185px);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .email-preview {
@@ -22,6 +23,16 @@
     font-size: 20px;
     align-items: center;
     cursor: pointer;
+    font-family: 'C&L';
+    font-weight: bold;
+}
+
+.description-title-span {
+    font-weight: normal;
+}
+
+.bold-CL {
+    font-weight: bold;
 }
 
 .email-preview img {

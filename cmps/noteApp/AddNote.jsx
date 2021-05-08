@@ -26,6 +26,7 @@ export class AddNote extends React.Component {
     onAddNote = () => {
         const type = this.state.type;
         const val = this.state.val;
+        if (!val) return
         this.props.addNote(type, val)
         this.setState({
             val: '',
@@ -37,7 +38,7 @@ export class AddNote extends React.Component {
             <div className="container">
                 <section className="add-note-container">
 
-                    <img onClick={this.onAddNote} className="left-border-radius" src="../../assets/img/plus-icon.png" />
+                    <img onClick={this.onAddNote} className="left-border-radius" src="assets/img/plus-icon.png" />
 
                     <input ref={this.inputRef} className="left-border-radius" type="text" name="val" id="val"
                         onChange={this.handleChange} value={this.state.val} />

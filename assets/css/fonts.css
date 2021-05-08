@@ -31,3 +31,8 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'PlayFairDisplay';
+    src: url(../font/PlayfairDisplay-Medium.ttf);
+}
