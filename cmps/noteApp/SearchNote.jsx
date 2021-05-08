@@ -18,7 +18,8 @@ export class SearchNote extends React.Component {
         return (
             <div className="search-box">
                 <form className="note-search">
-                    <input type="search" name="searchNote" id="vasearchNotel" value={this.state.val} onChange={this.handleChange} />
+                    <input type="search" name="searchNote" id="vasearchNotel" value={this.state.val}
+                        onChange={this.handleChange} />
                     <label htmlFor="searchNote"><img src="./assets/img/search-icon.png" /></label>
                 </form>
             </div>

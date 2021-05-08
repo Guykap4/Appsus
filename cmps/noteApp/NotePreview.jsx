@@ -9,7 +9,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNote
         switch (type) {
             case 'txtNote':
                 return <TxtNote
-                onCopyToClipboard={onCopyToClipboard}
+                    onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onUpdateNote={onUpdateNote}
@@ -17,15 +17,15 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNote
                     note={note} />
             case 'imgNote':
                 return <ImgNote
-                onCopyToClipboard={onCopyToClipboard}
-                 onNoteColorChange={onNoteColorChange}
+                    onCopyToClipboard={onCopyToClipboard}
+                    onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onUpdateNote={onUpdateNote}
                     onRemoveNote={onRemoveNote}
                     note={note} />
             case 'toDoNote':
                 return <ToDoNote
-                onCopyToClipboard={onCopyToClipboard}
+                    onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned}
                     onAddTodo={onAddTodo}
@@ -36,7 +36,7 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onPinned, onNote
                     note={note} />
             case 'vidNote':
                 return <VidNote
-                onCopyToClipboard={onCopyToClipboard}
+                    onCopyToClipboard={onCopyToClipboard}
                     onNoteColorChange={onNoteColorChange}
                     onPinned={onPinned} onUpdateNote={onUpdateNote}
                     onRemoveNote={onRemoveNote}
