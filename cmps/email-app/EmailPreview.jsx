@@ -46,7 +46,7 @@ export class EmailPreview extends React.Component {
                 <div onClick={this.toggleDetails} className={`email-preview ${this.state.isRead && 'read'}`}>
                     <span onClick={this.toggleRead}><img src={email.isRead? "./assets/img/read-icon.png" : "./assets/img/unread-icon.png"} /></span>
                     <span>{email.sender}</span>
-                    <span className="description-title-span">{email.title} - {email.content}</span>
+                    <span className="description-title-span"><span className="bold-CL">{email.title}</span> - {email.content}</span>
                     <span>{this.emailTime(email.time)}</span>
                 </div>
                 {this.state.isDetails && <EmailDetails onDeleteEmail={onDeleteEmail} email={email} />}

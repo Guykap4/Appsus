@@ -1,4 +1,5 @@
 import { noteService } from '../services/notes.service.js'
+import { eventBusService } from '../services/event-bus-service.js' 
 import { AddNote } from '../cmps/noteApp/AddNote.jsx'
 import { NoteList } from '../cmps/noteApp/NoteList.jsx'
 import { SearchNote } from '../cmps/noteApp/SearchNote.jsx'
@@ -14,6 +15,10 @@ export class NoteApp extends React.Component {
 
     componentDidMount() {
         this.loadNotes();
+        eventBusService.on('emailToNote', (val) => {
+            noteService.createNote('txtNote', val)
+            console.log(val);
+        })
     }
 
     loadNotes() {

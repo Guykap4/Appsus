@@ -1,4 +1,5 @@
 import { emailService } from '../../services/email.service.js'
+import { eventBusService } from '../../services/event-bus-service.js'
 
 export class EmailEdit extends React.Component {
 
@@ -47,7 +48,10 @@ export class EmailEdit extends React.Component {
                 content: '',
             }
         })
+        
         this.props.history.push('/email')
+        eventBusService.emit('readChange');
+        eventBusService.emit('userMsg', 'Mail Sent!');
     }
 
     goBack = () => {

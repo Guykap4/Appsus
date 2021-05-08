@@ -26,6 +26,7 @@ export class AddNote extends React.Component {
     onAddNote = () => {
         const type = this.state.type;
         const val = this.state.val;
+        if (!val) return
         this.props.addNote(type, val)
         this.setState({
             val: '',

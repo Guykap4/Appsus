@@ -2,35 +2,36 @@
     display: flex;
     background-color: whitesmoke;
     position: absolute;
-    bottom: -50px;
-    right: 20px;
+    bottom: -30px;
+    width: 150px;
+    right: 4px;
     gap: 10px;
     border: 5px solid rgb(61, 61, 61);
     border-radius: 20px;
     transition: 0.3s;
-    padding:3px 10px 3px 10px;
+    padding: 3px 10px 3px 10px;
     z-index: 1;
 }
 
-.picker-pallet-options:hover{
+.picker-pallet-options:hover {
     border-color: rgb(27, 27, 27);
     transition: 0.3s;
 }
 
 .color-picker-option {
     width: 30px;
-    height: 30px;
+    height: 15px;
     border-radius: 50%;
     border: none;
 }
 
-.color-picker-option:hover{
+.color-picker-option:hover {
     transition: 0.2s;
     transform: scale(1.2);
 }
 
 .red {
-    background-color: #da0101;
+    background-color: #db4b4b;
 }
 
 .green {
@@ -46,9 +47,31 @@
 }
 
 .lightgreen {
-    background-color: #91a91f;
+    background-color: #ffa24a;
 }
 
 .pink {
     background-color: #ff65a3;
+}
+
+@media (min-width: 480px) {
+    .picker-pallet-options {
+        width: 80%;
+        bottom: -35px;
+        right: 20px;
+    }
+    .color-picker-option {
+        height: 15px;
+    }
+}
+
+@media (min-width: 690px) {
+    .picker-pallet-options {
+        width: unset;
+        bottom: -50px;
+    }
+    .color-picker-option {
+        width: 30px;
+        height: 30px;
+    }
 }
