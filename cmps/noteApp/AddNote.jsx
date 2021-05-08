@@ -1,3 +1,5 @@
+import { eventBusService } from "../../services/event-bus-service.js" 
+
 export class AddNote extends React.Component {
     state = {
         type: 'txtNote',
@@ -31,6 +33,7 @@ export class AddNote extends React.Component {
         this.setState({
             val: '',
         })
+        eventBusService.emit('userMsg', 'Note Added!');
     }
 
     render() {
