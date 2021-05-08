@@ -45,6 +45,7 @@ export class NoteApp extends React.Component {
     onRemoveNote = (id) => {
         noteService.removeNote(id)
         this.loadNotes();
+        eventBusService.emit('userMsg', 'Note Deleted!');
     }
 
     onUpdateNote = (id, val, idx) => {

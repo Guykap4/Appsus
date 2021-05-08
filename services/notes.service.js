@@ -198,36 +198,46 @@ function copyToClipboard(noteId) {
             break;
     }
 
-    return navigator.clipboard.writeText((copyTxt) + '\n\nCopied from Appsus MissKeep')
+    return navigator.clipboard.writeText(copyTxt)
 }
 
 const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'txtNote',
-        color: 'rgb(255 243 191)',
+        color: '#db4b4b',
         isPinned: false,
         info: {
-            caption: 'im a txt note'
+            caption: `Don't forget to call mom for an advise on react!`
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'txtNote',
+        color: '#5cc077',
+        isPinned: true,
+        info: {
+            caption: `Dentist at 07/04/2043`
         }
     },
 
     {
         id: utilsService.makeId(),
         type: 'imgNote',
-        color: 'rgb(255 243 191)',
+        color: '#62a8e4',
         isPinned: false,
         info: {
-            caption: 'im an img note',
-            url: 'https://static.thaiflirting.com/site/img/slide2.jpg'
+            caption: 'First trip after corona...',
+            url: 'https://www.traveldailymedia.com/assets/2020/01/thailandblogger-1024x683.jpg'
         }
     },
 
     {
         id: utilsService.makeId(),
         type: 'toDoNote',
-        color: 'rgb(255 243 191)',
-        isPinned: false,
+        color: '#fff3bf',
+        isPinned: true,
         info: {
             toDos: [{
                 toDo: 'learn javaScript',
@@ -235,12 +245,58 @@ const gNotes = storageService.loadFromStorage('notes') || [
             },
             {
                 toDo: 'learn CSS',
-                isDone: false,
+                isDone: true,
             },
             {
                 toDo: 'learn HTML',
+                isDone: true,
+            },
+            {
+                toDo: 'learn React',
+                isDone: true,
+            },
+            {
+                toDo: 'learn NodeJS',
                 isDone: false,
-            }
+            },
+            {
+                toDo: 'learn Redux',
+                isDone: false,
+            },
+            ]
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'toDoNote',
+        color: '#ffa24a',
+        isPinned: true,
+        info: {
+            toDos: [{
+                toDo: 'Eggs',
+                isDone: false,
+            },
+            {
+                toDo: 'Milk',
+                isDone: false,
+            },
+            {
+                toDo: 'Butter',
+                isDone: false,
+            },
+            {
+                toDo: 'Flour',
+                isDone: false,
+            },
+            {
+                toDo: 'Baby oil',
+                isDone: false,
+            },
+            {
+                toDo: 'Soup almonds',
+                isDone: false,
+            },
             ]
         }
     },
@@ -248,11 +304,31 @@ const gNotes = storageService.loadFromStorage('notes') || [
     {
         id: utilsService.makeId(),
         type: 'vidNote',
-        color: 'rgb(255 243 191)',
+        color: '#ff65a3',
         isPinned: false,
         info: {
-            caption: 'im a vid note',
-            url: 'https://www.youtube.com/embed/watch?v=dQw4w9WgXcQ'
+            caption: 'Best video ever happend to mankind!',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+        }
+    },
+
+    {
+        id: utilsService.makeId(),
+        type: 'txtNote',
+        color: '#db4b4b',
+        isPinned: false,
+        info: {
+            caption: `I wanna be the very best
+            Like no one ever was
+            To catch them is my real test
+            To train them is my causeI will travel across the land
+            Searching far and wide
+            Teach Pokemon to understand
+            The power that's insidePokemon! Gotta catch 'em all
+            It's you and me
+            I know it's my destiny
+            Pokemon! Oh, you're my best friend
+            In a world we must defend`
         }
     },
 ]

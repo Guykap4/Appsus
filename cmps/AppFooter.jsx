@@ -2,7 +2,7 @@ export function AppFooter() {
 
     return (
         <footer>
-            <small>suffering &copy;</small>
+            <small>A&amp;G inc. &copy;</small>
         </footer>
     )
 }

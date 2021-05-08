@@ -36,3 +36,8 @@
     font-family: 'PlayFairDisplay';
     src: url(../font/PlayfairDisplay-Medium.ttf);
 }
+
+@font-face {
+    font-family: 'Righteous';
+    src: url(../font/Righteous-Regular.ttf);
+}
