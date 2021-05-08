@@ -104,7 +104,6 @@ function createNote(type, val) {
 function updateNote(id, val, toDoIdx) {
 
     if (toDoIdx) {
-        console.log('hi');
         const noteIdx = _getNoteIdx(id)
         gNotes[noteIdx].info.toDos[toDoIdx].toDo = val;
         storageService.saveToStorage('notes', gNotes);

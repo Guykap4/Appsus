@@ -15,7 +15,7 @@ export class AppHeader extends React.Component {
     render() {
         return (
             <header className="header">
-                <div className="logo">LOGO</div>
+                <div className="logo">MLD</div>
                 <div onClick={this.toggleMenu} className="nav-icon"><img src="./assets/img/app-menu-icon.png" /></div>
                 {this.state.isMenuShown && <AppMenu />}
             </header>

@@ -25,3 +25,9 @@
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Arizona';
+    src: url(../font/Arizonia-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}

@@ -2,7 +2,6 @@ import { NotePreview } from './NotePreview.jsx'
 export function NoteList({ notes, onRemoveNote, onUpdateNote, onPinned, onNoteColorChange, onRemoveTodo, onToggleDone, onAddTodo, onCopyToClipboard }) {
 
   function getHeadline() {
-    console.log('notes', notes);
     if (!notes || notes.length === 0) return
     return notes[0].isPinned ? 'Pinned Notes' : 'Unpinned Notes'
   }

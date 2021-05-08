@@ -1,6 +1,6 @@
 .picker-pallet-options {
     display: flex;
-    background-color: whitesmoke;
+    background-color: #dbd7f1;
     position: absolute;
     bottom: -50px;
     right: 20px;
@@ -29,8 +29,8 @@
     transform: scale(1.2);
 }
 
-.red {
-    background-color: #da0101;
+.strong-pink {
+    background-color:#ff3193 ;
 }
 
 .green {
@@ -45,8 +45,8 @@
     background-color: #fff3bf;
 }
 
-.lightgreen {
-    background-color: #91a91f;
+.brown {
+    background-color:  #b08038;
 }
 
 .pink {
