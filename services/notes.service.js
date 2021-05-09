@@ -93,7 +93,6 @@ function createNote(type, val) {
 
             break;
         default:
-            console.log('type:', type, 'val', val);
             break;
     }
 

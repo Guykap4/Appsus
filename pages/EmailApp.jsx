@@ -21,20 +21,18 @@ export class EmailApp extends React.Component {
     loadEmails = () => {
         emailService.query(this.state.searchBy, this.state.filterBy)
             .then(emails => {
-                this.setState({ emails: emails }, () => console.log(this.state))
+                this.setState({ emails: emails })
             })
     }
 
     onDeleteEmail = (id) => {
         emailService.deleteEmail(id)
-        console.log('deleted!');
         this.loadEmails();
         eventBusService.emit('userMsg', 'Mail Deleted!')
     }
 
     onAddEmail = ({ to, subject, content }) => {
         emailService.addEmail(to, subject, content)
-        console.log('added!');
         this.loadEmails();
     }
 

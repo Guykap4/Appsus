@@ -31,7 +31,6 @@ export class NoteEdit extends React.Component {
             const idx = this.props.idx;
             this.props.onUpdateNote(id, val, idx)
             this.props.toggleEdit();
-            console.log(id, val, idx);
             return
         }
 

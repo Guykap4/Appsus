@@ -17,7 +17,6 @@ export class NoteApp extends React.Component {
         this.loadNotes();
         eventBusService.on('emailToNote', (val) => {
             noteService.createNote('txtNote', val)
-            console.log(val);
         })
     }
 
