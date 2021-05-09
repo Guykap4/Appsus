@@ -49,20 +49,20 @@ export class AddNote extends React.Component {
                     <form>
                         <input checked={this.state.type === 'txtNote'} onChange={this.onSetNoteType} type="radio"
                             name="val" value="txtNote" id="txt" hidden />
-                        <label htmlFor="txt"><img src="../../assets/img/a-icon.png" /></label>
+                        <label htmlFor="txt"><img src="./assets/img/a-icon.png" /></label>
 
                         <input checked={this.state.type === 'imgNote'} onChange={this.onSetNoteType} type="radio"
                             name="val" value="imgNote" id="img" hidden />
-                        <label htmlFor="img"><img src="../../assets/img/img-icon.png" /></label>
+                        <label htmlFor="img"><img src="./assets/img/img-icon.png" /></label>
 
                         <input checked={this.state.type === 'vidNote'} onChange={this.onSetNoteType} type="radio"
                             name="val" value="vidNote" id="vid" hidden />
-                        <label htmlFor="vid"><img src="../../assets/img/vid-icon.ico" /></label>
+                        <label htmlFor="vid"><img src="./assets/img/vid-icon.ico" /></label>
 
                         <input checked={this.state.type === 'toDoNote'} onChange={this.onSetNoteType} type="radio"
                             name="val" value="toDoNote" id="todo" hidden />
                         <label htmlFor="todo"><img className="right-border-radius"
-                            src="../../assets/img/todo-icon.png" /></label>
+                            src="./assets/img/todo-icon.png" /></label>
                     </form>
                 </section>
             </div>

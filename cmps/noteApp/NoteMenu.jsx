@@ -53,19 +53,19 @@ export class NoteMenu extends React.Component {
                 <div className="note-type-icon"><img src={this.NoteTypeIcon} /></div>
                 <div onClick={() => { this.props.onPinned(this.state.note.id) }}
                     className={`note-editor-icon ${this.state.note.isPinned ? 'pinned' : ''}`}>
-                    <img src="../../assets/img/pin-icon.png" />
+                    <img src="./assets/img/pin-icon.png" />
                 </div>
                 <div onClick={() => { this.toggleColorpicker() }} className="note-editor-icon">
-                    <img src="../../assets/img/color-icon.png" />
+                    <img src="./assets/img/color-icon.png" />
                 </div>
                 {this.state.isPickerOpen && <ColorPickerPallet onNoteColorChange={this.props.onNoteColorChange}
                     toggleColorpicker={this.toggleColorpicker} noteId={this.state.note.id} />}
                 
                 <div onClick={() => { this.copyToClipboard() }} className="note-editor-icon">
-                    <img src="../../assets/img/copy-icon.ico" />
+                    <img src="./assets/img/copy-icon.ico" />
                 </div>
                 <div onClick={() => this.props.onRemoveNote(this.state.note.id)} className="note-editor-icon">
-                    <img src="../../assets/img/trash-icon.png" />
+                    <img src="./assets/img/trash-icon.png" />
                 </div>
             </div>
         )
